@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="当下的力量">
 <meta property="og:description" content="下载一个CodeRuner,运行如下代码">
 <meta property="og:image" content="http://yoursite.com/img/QQ20160718-0@2x.png">
-<meta property="og:updated_time" content="2016-07-18T04:59:18.000Z">
+<meta property="og:updated_time" content="2016-07-18T07:27:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Nodejs打造自己的服务器">
 <meta name="twitter:description" content="下载一个CodeRuner,运行如下代码">
@@ -222,7 +222,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-07-18T12:59:18+08:00" content="2016-07-18">
+            <time itemprop="dateCreated" datetime="2016-07-18T15:27:35+08:00" content="2016-07-18">
               2016-07-18
             </time>
           </span>
@@ -271,6 +271,7 @@
         <span itemprop="articleBody"><blockquote>
 <p>下载一个CodeRuner,运行如下代码</p>
 </blockquote>
+<hr>
 <a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"request: "</span> + request.method);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"header: "</span> + <span class="built_in">JSON</span>.stringify(request.headers));</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"url: "</span> + getClientIp(request));</span><br><span class="line">	response.write(<span class="built_in">JSON</span>.stringify(a));</span><br><span class="line">	response.end();</span><br><span class="line">&#125;</span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started."</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getClientIp</span>(<span class="params">req</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> req.headers[<span class="string">'x-forwarded-for'</span>] ||</span><br><span class="line">	req.connection.remoteAddress ||</span><br><span class="line">	req.socket.remoteAddress ||</span><br><span class="line">	req.connection.socket.remoteAddress;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">	provinceCode:<span class="string">"280"</span>,</span><br><span class="line">	cityCode:<span class="string">"0282"</span>,</span><br><span class="line">	iconImgType:<span class="string">"200"</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>如下截图：<br><img src="/img/QQ20160718-0@2x.png" alt=""></p>
@@ -362,10 +363,10 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Tyler Li" itemprop="image"/>
+          <img class="site-author-image" src="/img/avatar.jpg" alt="Tyler Li" itemprop="image"/>
           <p class="site-author-name" itemprop="name">Tyler Li</p>
         </div>
-        <p class="site-description motion-element" itemprop="description"></p>
+        <p class="site-description motion-element" itemprop="description">凌冬将至!</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
