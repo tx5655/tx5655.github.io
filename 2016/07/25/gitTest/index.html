@@ -1,0 +1,750 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="安装Git创建版本库什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。
+所以，创建一个版本库非常简单，  
+选择一个合适的地方，创建一个空目录：通过git init命令把这个目录变成Git可以管理的仓库12$ git i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 操作练习">
+<meta property="og:url" content="http://yoursite.com/2016/07/25/gitTest/index.html">
+<meta property="og:site_name" content="当下的力量">
+<meta property="og:description" content="安装Git创建版本库什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。
+所以，创建一个版本库非常简单，  
+选择一个合适的地方，创建一个空目录：通过git init命令把这个目录变成Git可以管理的仓库12$ git i">
+<meta property="og:updated_time" content="2016-07-21T02:15:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git 操作练习">
+<meta name="twitter:description" content="安装Git创建版本库什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。
+所以，创建一个版本库非常简单，  
+选择一个合适的地方，创建一个空目录：通过git init命令把这个目录变成Git可以管理的仓库12$ git i">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Git 操作练习 | 当下的力量 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">当下的力量</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Winter is comming！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Git 操作练习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-07-25T14:27:30+08:00" content="2016-07-25">
+              2016-07-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/25/gitTest/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/gitTest/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="u5B89_u88C5Git"><a href="#u5B89_u88C5Git" class="headerlink" title="安装Git"></a>安装Git</h2><h2 id="u521B_u5EFA_u7248_u672C_u5E93"><a href="#u521B_u5EFA_u7248_u672C_u5E93" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<p>所以，创建一个版本库非常简单，  </p>
+<h2 id="u9009_u62E9_u4E00_u4E2A_u5408_u9002_u7684_u5730_u65B9_uFF0C_u521B_u5EFA_u4E00_u4E2A_u7A7A_u76EE_u5F55_uFF1A"><a href="#u9009_u62E9_u4E00_u4E2A_u5408_u9002_u7684_u5730_u65B9_uFF0C_u521B_u5EFA_u4E00_u4E2A_u7A7A_u76EE_u5F55_uFF1A" class="headerlink" title="选择一个合适的地方，创建一个空目录："></a>选择一个合适的地方，创建一个空目录：</h2><h2 id="u901A_u8FC7git_init_u547D_u4EE4_u628A_u8FD9_u4E2A_u76EE_u5F55_u53D8_u6210Git_u53EF_u4EE5_u7BA1_u7406_u7684_u4ED3_u5E93"><a href="#u901A_u8FC7git_init_u547D_u4EE4_u628A_u8FD9_u4E2A_u76EE_u5F55_u53D8_u6210Git_u53EF_u4EE5_u7BA1_u7406_u7684_u4ED3_u5E93" class="headerlink" title="通过git init命令把这个目录变成Git可以管理的仓库"></a>通过git init命令把这个目录变成Git可以管理的仓库</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> <span class="regexp">/Users/</span>lyl<span class="regexp">/test/</span>.git/</span><br></pre></td></tr></table></figure>
+<hr>
+ <a id="more"></a> 
+<h2 id="u547D_u4EE4git_add_u544A_u8BC9Git_uFF0C_u628A_u6587_u4EF6_u6DFB_u52A0_u5230_u4ED3_u5E93"><a href="#u547D_u4EE4git_add_u544A_u8BC9Git_uFF0C_u628A_u6587_u4EF6_u6DFB_u52A0_u5230_u4ED3_u5E93" class="headerlink" title="命令git add告诉Git，把文件添加到仓库"></a>命令git add告诉Git，把文件添加到仓库</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">add </span>readme.txt</span><br></pre></td></tr></table></figure>
+<h2 id="u547D_u4EE4git_commit_u544A_u8BC9Git_uFF0C_u628A_u6587_u4EF6_u63D0_u4EA4_u5230_u4ED3_u5E93"><a href="#u547D_u4EE4git_commit_u544A_u8BC9Git_uFF0C_u628A_u6587_u4EF6_u63D0_u4EA4_u5230_u4ED3_u5E93" class="headerlink" title="命令git commit告诉Git，把文件提交到仓库"></a>命令git commit告诉Git，把文件提交到仓库</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">"wrote a readme file"</span></span><br><span class="line">[<span class="keyword">master</span> (root-<span class="keyword">commit</span>) cb926e7] wrote a readme <span class="keyword">file</span></span><br><span class="line"> <span class="number">1</span> <span class="keyword">file</span> <span class="keyword">changed</span>, <span class="number">2</span> insertions(+)</span><br><span class="line"> <span class="keyword">create</span> <span class="keyword">mode</span> <span class="number">100644</span> readme.txt</span></span><br></pre></td></tr></table></figure>
+<h2 id="git_status_u547D_u4EE4_u53EF_u4EE5_u8BA9_u6211_u4EEC_u65F6_u523B_u638C_u63E1_u4ED3_u5E93_u5F53_u524D_u7684_u72B6_u6001"><a href="#git_status_u547D_u4EE4_u53EF_u4EE5_u8BA9_u6211_u4EEC_u65F6_u523B_u638C_u63E1_u4ED3_u5E93_u5F53_u524D_u7684_u72B6_u6001" class="headerlink" title="git status命令可以让我们时刻掌握仓库当前的状态"></a>git status命令可以让我们时刻掌握仓库当前的状态</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"># On branch master</span><br><span class="line"># Changes not staged for <span class="operator"><span class="keyword">commit</span>:</span><br><span class="line">#   (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</span><br><span class="line">#   (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</span><br><span class="line">#</span><br><span class="line">#    modified:   readme.txt</span><br><span class="line">#</span><br><span class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</span></span><br></pre></td></tr></table></figure>
+<p>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令告诉我们，readme.txt被修改过了，但还没有准备提交的修改。  </p>
+<h3 id="git_diff_u8FD9_u4E2A_u547D_u4EE4_u67E5_u770B_u4E0A_u6B21_u4FEE_u6539"><a href="#git_diff_u8FD9_u4E2A_u547D_u4EE4_u67E5_u770B_u4E0A_u6B21_u4FEE_u6539" class="headerlink" title="git diff这个命令查看上次修改"></a>git diff这个命令查看上次修改</h3><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git diff readme.txt </span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index 46d49bf..9247db6 100644</span><br><span class="line"><span class="header">--- a/readme.txt</span></span><br><span class="line"><span class="header">+++ b/readme.txt</span></span><br><span class="line"><span class="chunk">@@ -1,2 +1,2 @@</span></span><br><span class="line"><span class="deletion">-Git is a version control system.</span></span><br><span class="line"><span class="addition">+Git is a distributed version control system.</span></span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
+<p>git diff顾名思义就是查看difference，显示的格式正是Unix通用的diff格式，可以从上面的命令输出看到，我们在第一行添加了一个“distributed”单词。 或者，提交后，用<strong>git diff HEAD – readme.txt</strong>命令可以查看工作区和版本库里面最新版本的区别：</p>
+<h2 id="u7528git_log_u547D_u4EE4_u67E5_u770B_u5386_u53F2_u8BB0_u5F55"><a href="#u7528git_log_u547D_u4EE4_u67E5_u770B_u5386_u53F2_u8BB0_u5F55" class="headerlink" title="用git log命令查看历史记录"></a>用git log命令查看历史记录</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">commit <span class="number">3628164f</span>b26d48395383f8f31179f24e0882e1e0</span><br><span class="line">Author: Michael Liao &lt;askxuefeng@gmail.com&gt;</span><br><span class="line">Date:   Tue Aug <span class="number">20</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">49</span> <span class="number">2013</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit ea34578d5496d7dd233c827ed32a8cd576c5ee85</span><br><span class="line">Author: Michael Liao &lt;askxuefeng@gmail.com&gt;</span><br><span class="line">Date:   Tue Aug <span class="number">20</span> <span class="number">14</span>:<span class="number">53</span>:<span class="number">12</span> <span class="number">2013</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit cb926e7ea50ad11b8f9e909c05226233bf755030</span><br><span class="line">Author: Michael Liao &lt;askxuefeng@gmail.com&gt;</span><br><span class="line">Date:   Mon Aug <span class="number">19</span> <span class="number">17</span>:<span class="number">51</span>:<span class="number">55</span> <span class="number">2013</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+<p>git log命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是append GPL，上一次是add distributed，最早的一次是wrote a readme file。  </p>
+<h3 id="u2013pretty_3Doneline_u53C2_u6570_2C_u53EF_u4EE5_u53EA_u663E_u793A__u7248_u672C_u53F7_+__u6CE8_u91CA"><a href="#u2013pretty_3Doneline_u53C2_u6570_2C_u53EF_u4EE5_u53EA_u663E_u793A__u7248_u672C_u53F7_+__u6CE8_u91CA" class="headerlink" title="–pretty=oneline参数,可以只显示 版本号 + 注释"></a>–pretty=oneline参数,可以只显示 版本号 + 注释</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line"><span class="number">3628164</span>fb<span class="number">26d48395383</span>f<span class="number">8f31179f24</span>e<span class="number">0882e1e0</span> append GPL</span><br><span class="line">ea<span class="number">34578d5496</span>d7dd<span class="number">233c827</span>ed32a8cd576c5ee85 add distributed</span><br><span class="line">cb926e7ea50ad<span class="number">11b8f9e90</span><span class="number">9c05226233</span>bf755030 wrote a readme file</span><br></pre></td></tr></table></figure>
+<p>需要友情提示的是，你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的commit id和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。  </p>
+<h2 id="u56DE_u9000_u7248_u672C"><a href="#u56DE_u9000_u7248_u672C" class="headerlink" title="回退版本"></a>回退版本</h2><blockquote>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交3628164…882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</p>
+</blockquote>
+<h3 id="u4F7F_u7528git_reset_u547D_u4EE4_2C_u56DE_u9000_u5230_u4E0A_u4E00_u4E2A_u7248_u672C"><a href="#u4F7F_u7528git_reset_u547D_u4EE4_2C_u56DE_u9000_u5230_u4E0A_u4E00_u4E2A_u7248_u672C" class="headerlink" title="使用git reset命令,回退到上一个版本"></a>使用git reset命令,回退到上一个版本</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard HEAD^</span></span><br><span class="line"><span class="keyword">HEAD</span> <span class="keyword">is</span> <span class="keyword">now</span> <span class="keyword">at</span> ea34578 <span class="keyword">add</span> <span class="keyword">distributed</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>–hard</strong> 参数有啥意义？这个后面再讲，现在你先放心使用</p>
+<h3 id="u56DE_u5230_u5DF2_u6709_u7684_u4EFB_u610F_u7248_u672C"><a href="#u56DE_u5230_u5DF2_u6709_u7684_u4EFB_u610F_u7248_u672C" class="headerlink" title="回到已有的任意版本"></a>回到已有的任意版本</h3><p>最新的那个版本append GPL已经看不到了！好比你从21世纪坐时光穿梭机来到了19世纪，想再回去已经回不去了，肿么办？</p>
+<p>办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个append GPL的commit id是3628164…，于是就可以指定回到未来的某个版本：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard 3628164</span></span><br><span class="line"><span class="keyword">HEAD</span> <span class="keyword">is</span> <span class="keyword">now</span> <span class="keyword">at</span> <span class="number">3628164</span> append GPL</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的commit id怎么办？<br>在Git中，总是有后悔药可以吃的。当你用$ git reset –hard HEAD^回退到add distributed版本时，再想恢复到append GPL，就必须找到append GPL的commit id。Git提供了一个命令<strong>git reflog</strong>用来记录你的每一次命令：  </p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">ea34578 HEAD@&#123;<span class="number">0</span>&#125;: reset: moving to HEAD^</span><br><span class="line"><span class="number">3628164</span> HEAD@&#123;<span class="number">1</span>&#125;: commit: append GPL</span><br><span class="line">ea34578 HEAD@&#123;<span class="number">2</span>&#125;: commit: add distributed</span><br><span class="line">cb926e7 HEAD@&#123;<span class="number">3</span>&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
+<h2 id="git_checkout__u2013_file_u53EF_u4EE5_u4E22_u5F03_u5DE5_u4F5C_u533A_u7684_u4FEE_u6539_uFF1A"><a href="#git_checkout__u2013_file_u53EF_u4EE5_u4E22_u5F03_u5DE5_u4F5C_u533A_u7684_u4FEE_u6539_uFF1A" class="headerlink" title="git checkout – file可以丢弃工作区的修改："></a>git checkout – file可以丢弃工作区的修改：</h2><h3 id="u64A4_u9500_u5DE5_u4F5C_u533A_u7684_u4FEE_u6539_u56DE_u5230_u4E0A_u4E00_u6B21_add__u6216_u8005_commit"><a href="#u64A4_u9500_u5DE5_u4F5C_u533A_u7684_u4FEE_u6539_u56DE_u5230_u4E0A_u4E00_u6B21_add__u6216_u8005_commit" class="headerlink" title="撤销工作区的修改回到上一次 add 或者 commit"></a>撤销工作区的修改回到上一次 add 或者 commit</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout <span class="comment">-- readme.txt</span></span><br></pre></td></tr></table></figure>
+<p>命令git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：</p>
+<p>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
+<p>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
+<p>总之，就是让这个文件回到最近一次git commit或git add时的状态。  </p>
+<h3 id="u64A4_u9500_u6389_uFF08unstage_uFF09_u6682_u5B58_u533A_u7684_u4FEE_u6539_uFF0C_u91CD_u65B0_u653E_u56DE_u5DE5_u4F5C_u533A_u3002_u6E05_u7A7A_u67D0_u6587_u4EF6_u7684_u6682_u5B58_u533A"><a href="#u64A4_u9500_u6389_uFF08unstage_uFF09_u6682_u5B58_u533A_u7684_u4FEE_u6539_uFF0C_u91CD_u65B0_u653E_u56DE_u5DE5_u4F5C_u533A_u3002_u6E05_u7A7A_u67D0_u6587_u4EF6_u7684_u6682_u5B58_u533A" class="headerlink" title="撤销掉（unstage）暂存区的修改，重新放回工作区。清空某文件的暂存区"></a>撤销掉（unstage）暂存区的修改，重新放回工作区。清空某文件的暂存区</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="operator"><span class="keyword">reset</span> <span class="keyword">HEAD</span> readme.txt</span><br><span class="line">Unstaged changes <span class="keyword">after</span> <span class="keyword">reset</span>:</span><br><span class="line"><span class="keyword">M</span>       readme.txt</span></span><br></pre></td></tr></table></figure>
+<p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。  </p>
+<h3 id="u56DE_u9000_u5C0F_u7ED3_uFF1A"><a href="#u56DE_u9000_u5C0F_u7ED3_uFF1A" class="headerlink" title="回退小结："></a>回退小结：</h3><ul>
+<li>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<strong>git checkout – file</strong>。  </li>
+<li>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<strong>git reset HEAD file</strong>，就回到了场景1，第二步按场景1操作。</li>
+<li>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，版本回退<strong>git reset –hard 3628164</strong>，不过前提是没有推送到远程库。</li>
+</ul>
+<h2 id="u5220_u9664"><a href="#u5220_u9664" class="headerlink" title="删除"></a>删除</h2><p>确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit   </p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">rm</span> <span class="keyword">test</span>.txt <span class="comment">//版本库中删除</span></span><br><span class="line"><span class="keyword">rm</span> '<span class="keyword">test</span>.txt' <span class="comment">//本地删除文件</span></span><br><span class="line">$ git commit -<span class="keyword">m</span> <span class="string">"remove test.txt"</span></span><br><span class="line">[master d17efd8] remove <span class="keyword">test</span>.txt</span><br><span class="line"> 1 <span class="keyword">file</span> changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 <span class="keyword">test</span>.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本  </p>
+</blockquote>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout <span class="comment">-- test.txt</span></span><br></pre></td></tr></table></figure>
+<p>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/18/HomeMadeTomcat/" rel="next" title="利用Nodejs几行代码打造的简易服务器">
+                <i class="fa fa-chevron-left"></i> 利用Nodejs几行代码打造的简易服务器
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/25/Command/" rel="prev" title="iOS,macOS相关Tips">
+                iOS,macOS相关Tips <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/25/gitTest/"
+           data-title="Git 操作练习" data-url="http://yoursite.com/2016/07/25/gitTest/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/img/avatar.jpg" alt="Tyler Li" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Tyler Li</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">凌冬将至!</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tx5655" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2173969642/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5Git"><span class="nav-number">1.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u521B_u5EFA_u7248_u672C_u5E93"><span class="nav-number">2.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9009_u62E9_u4E00_u4E2A_u5408_u9002_u7684_u5730_u65B9_uFF0C_u521B_u5EFA_u4E00_u4E2A_u7A7A_u76EE_u5F55_uFF1A"><span class="nav-number">3.</span> <span class="nav-text">选择一个合适的地方，创建一个空目录：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u901A_u8FC7git_init_u547D_u4EE4_u628A_u8FD9_u4E2A_u76EE_u5F55_u53D8_u6210Git_u53EF_u4EE5_u7BA1_u7406_u7684_u4ED3_u5E93"><span class="nav-number">4.</span> <span class="nav-text">通过git init命令把这个目录变成Git可以管理的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u547D_u4EE4git_add_u544A_u8BC9Git_uFF0C_u628A_u6587_u4EF6_u6DFB_u52A0_u5230_u4ED3_u5E93"><span class="nav-number">5.</span> <span class="nav-text">命令git add告诉Git，把文件添加到仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u547D_u4EE4git_commit_u544A_u8BC9Git_uFF0C_u628A_u6587_u4EF6_u63D0_u4EA4_u5230_u4ED3_u5E93"><span class="nav-number">6.</span> <span class="nav-text">命令git commit告诉Git，把文件提交到仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git_status_u547D_u4EE4_u53EF_u4EE5_u8BA9_u6211_u4EEC_u65F6_u523B_u638C_u63E1_u4ED3_u5E93_u5F53_u524D_u7684_u72B6_u6001"><span class="nav-number">7.</span> <span class="nav-text">git status命令可以让我们时刻掌握仓库当前的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git_diff_u8FD9_u4E2A_u547D_u4EE4_u67E5_u770B_u4E0A_u6B21_u4FEE_u6539"><span class="nav-number">7.1.</span> <span class="nav-text">git diff这个命令查看上次修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7528git_log_u547D_u4EE4_u67E5_u770B_u5386_u53F2_u8BB0_u5F55"><span class="nav-number">8.</span> <span class="nav-text">用git log命令查看历史记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u2013pretty_3Doneline_u53C2_u6570_2C_u53EF_u4EE5_u53EA_u663E_u793A__u7248_u672C_u53F7_+__u6CE8_u91CA"><span class="nav-number">8.1.</span> <span class="nav-text">–pretty=oneline参数,可以只显示 版本号 + 注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u56DE_u9000_u7248_u672C"><span class="nav-number">9.</span> <span class="nav-text">回退版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528git_reset_u547D_u4EE4_2C_u56DE_u9000_u5230_u4E0A_u4E00_u4E2A_u7248_u672C"><span class="nav-number">9.1.</span> <span class="nav-text">使用git reset命令,回退到上一个版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u56DE_u5230_u5DF2_u6709_u7684_u4EFB_u610F_u7248_u672C"><span class="nav-number">9.2.</span> <span class="nav-text">回到已有的任意版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git_checkout__u2013_file_u53EF_u4EE5_u4E22_u5F03_u5DE5_u4F5C_u533A_u7684_u4FEE_u6539_uFF1A"><span class="nav-number">10.</span> <span class="nav-text">git checkout – file可以丢弃工作区的修改：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u64A4_u9500_u5DE5_u4F5C_u533A_u7684_u4FEE_u6539_u56DE_u5230_u4E0A_u4E00_u6B21_add__u6216_u8005_commit"><span class="nav-number">10.1.</span> <span class="nav-text">撤销工作区的修改回到上一次 add 或者 commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u64A4_u9500_u6389_uFF08unstage_uFF09_u6682_u5B58_u533A_u7684_u4FEE_u6539_uFF0C_u91CD_u65B0_u653E_u56DE_u5DE5_u4F5C_u533A_u3002_u6E05_u7A7A_u67D0_u6587_u4EF6_u7684_u6682_u5B58_u533A"><span class="nav-number">10.2.</span> <span class="nav-text">撤销掉（unstage）暂存区的修改，重新放回工作区。清空某文件的暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u56DE_u9000_u5C0F_u7ED3_uFF1A"><span class="nav-number">10.3.</span> <span class="nav-text">回退小结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5220_u9664"><span class="nav-number">11.</span> <span class="nav-text">删除</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tyler Li</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tx5655"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
