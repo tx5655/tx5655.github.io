@@ -51,16 +51,16 @@
 
 
 
-<meta name="description" content="常用的Terminal命令查看本机IP    ifconfig en0模拟器调试3D-Touch echo &amp;#39;com.apple.mobilecal&amp;#39; | nc 127.0.0.1 8000">
+<meta name="description" content="其他常用的Terminal命令查看本机IP    ifconfig en0模拟器调试3D-Touch echo &amp;#39;com.apple.mobilecal&amp;#39; | nc 127.0.0.1 8000">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS,macOS相关Tips">
-<meta property="og:url" content="http://yoursite.com/2016/07/25/Command/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/10/17/Command/index.html">
 <meta property="og:site_name" content="当下的力量">
-<meta property="og:description" content="常用的Terminal命令查看本机IP    ifconfig en0模拟器调试3D-Touch echo &amp;#39;com.apple.mobilecal&amp;#39; | nc 127.0.0.1 8000">
-<meta property="og:updated_time" content="2016-07-18T10:35:13.000Z">
+<meta property="og:description" content="其他常用的Terminal命令查看本机IP    ifconfig en0模拟器调试3D-Touch echo &amp;#39;com.apple.mobilecal&amp;#39; | nc 127.0.0.1 8000">
+<meta property="og:updated_time" content="2016-10-17T01:50:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS,macOS相关Tips">
-<meta name="twitter:description" content="常用的Terminal命令查看本机IP    ifconfig en0模拟器调试3D-Touch echo &amp;#39;com.apple.mobilecal&amp;#39; | nc 127.0.0.1 8000">
+<meta name="twitter:description" content="其他常用的Terminal命令查看本机IP    ifconfig en0模拟器调试3D-Touch echo &amp;#39;com.apple.mobilecal&amp;#39; | nc 127.0.0.1 8000">
 
 
 
@@ -221,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-07-25T14:29:49+08:00" content="2016-07-25">
-              2016-07-25
+            <time itemprop="dateCreated" datetime="2016-10-17T09:50:48+08:00" content="2016-10-17">
+              2016-10-17
             </time>
           </span>
 
@@ -247,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/25/Command/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/Command/" itemprop="commentsCount"></span>
+                <a href="/2016/10/17/Command/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/17/Command/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,10 +267,11 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u5E38_u7528_u7684Terminal_u547D_u4EE4"><a href="#u5E38_u7528_u7684Terminal_u547D_u4EE4" class="headerlink" title="常用的Terminal命令"></a>常用的Terminal命令</h3><p>查看本机IP    <code>ifconfig en0</code><br>模拟器调试3D-Touch <code>echo &#39;com.apple.mobilecal&#39; | nc 127.0.0.1 8000</code></p>
+        <span itemprop="articleBody"><h2 id="u5176_u4ED6"><a href="#u5176_u4ED6" class="headerlink" title="其他"></a>其他</h2><h3 id="u5E38_u7528_u7684Terminal_u547D_u4EE4"><a href="#u5E38_u7528_u7684Terminal_u547D_u4EE4" class="headerlink" title="常用的Terminal命令"></a>常用的Terminal命令</h3><p>查看本机IP    <code>ifconfig en0</code><br>模拟器调试3D-Touch <code>echo &#39;com.apple.mobilecal&#39; | nc 127.0.0.1 8000</code></p>
 <hr>
  <a id="more"></a> 
-<h3 id="Xcode_u76F8_u5173"><a href="#Xcode_u76F8_u5173" class="headerlink" title="Xcode相关"></a>Xcode相关</h3><ul>
+<h3 id="MarkDown_u6587_u4EF6_u751F_u6210HTML_u6587_u4EF6"><a href="#MarkDown_u6587_u4EF6_u751F_u6210HTML_u6587_u4EF6" class="headerlink" title="MarkDown文件生成HTML文件"></a>MarkDown文件生成HTML文件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install tocmd <span class="comment">//安装tocmd工具</span></span><br><span class="line">sudo tocmd_local -f test<span class="class">.md</span> <span class="comment">//当前目录下</span></span><br></pre></td></tr></table></figure>
+<h2 id="Xcode_u76F8_u5173"><a href="#Xcode_u76F8_u5173" class="headerlink" title="Xcode相关"></a>Xcode相关</h2><h3 id="Xcode_u6E05_u7406"><a href="#Xcode_u6E05_u7406" class="headerlink" title="Xcode清理"></a>Xcode清理</h3><ul>
 <li>删除Xcode中多余的证书provisioning profile 的path：<br><code>~/Library/MobileDevice/Provisioning Profiles</code></li>
 <li>清理Xcode编译项目产生的缓存垃圾<br><code>~/Library/Developer/Xcode/DerivedData</code></li>
 <li>vvdocument 有时安装不成功,需要重置一下<br><code>defaults delete com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-{your_xcode_version}</code></li>
@@ -290,7 +291,21 @@
 <li><strong>i386</strong>对应模拟器的32位模拟器</li>
 <li><strong>x86_64</strong>对应模拟器的64位模拟器</li>
 </ul>
-<h3 id="MarkDown_u6587_u4EF6_u751F_u6210HTML_u6587_u4EF6"><a href="#MarkDown_u6587_u4EF6_u751F_u6210HTML_u6587_u4EF6" class="headerlink" title="MarkDown文件生成HTML文件"></a>MarkDown文件生成HTML文件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install tocmd <span class="comment">//安装tocmd工具</span></span><br><span class="line">sudo tocmd_local -f test<span class="class">.md</span> <span class="comment">//当前目录下</span></span><br></pre></td></tr></table></figure></span>
+<h2 id="iOS_u76F8_u5173"><a href="#iOS_u76F8_u5173" class="headerlink" title="iOS相关"></a>iOS相关</h2><h3 id="u4ECE_u6E90_u7801_u5230APP"><a href="#u4ECE_u6E90_u7801_u5230APP" class="headerlink" title="从源码到APP"></a>从源码到APP</h3><blockquote>
+<p>当我们点击了 build 之后，做了什么事情呢？  </p>
+</blockquote>
+<ul>
+<li>预处理（Pre-process）：把宏替换，删除注释，展开头文件，产生 .i 文件。</li>
+<li>编译（Compliling）：把之前的 .i 文件转换成汇编语言，产生 .s文件。</li>
+<li>汇编（Asembly）：把汇编语言文件转换为机器码文件，产生 .o 文件。</li>
+<li>链接（Link）：对.o文件中的对于其他的库的引用的地方进行引用，生成最后的可执行文件（同时也包括多个 .o 文件进行 link）。 </li>
+</ul>
+<h3 id="Build_phases__26amp_3B_26amp_3B_Build_rules__26amp_3B_26amp_3B_Build_settings"><a href="#Build_phases__26amp_3B_26amp_3B_Build_rules__26amp_3B_26amp_3B_Build_settings" class="headerlink" title="Build phases &amp;&amp; Build rules &amp;&amp; Build settings"></a>Build phases &amp;&amp; Build rules &amp;&amp; Build settings</h3><ul>
+<li><strong>Build phases</strong>: 主要是用来控制从源文件到可执行文件的整个过程的，所以应该说是面向源文件的，包括编译哪些文件，以及在编译过程中执行一些自定义的脚本什么的。</li>
+<li><strong>Build rules</strong>: 主要是用来控制如何编译某种类型的源文件的，假如说相对某种类型的原文件进行特定的编译，那么就应该在这里进行编辑了。同时这里也会大量的运用一些 xcode 中的环境变量，完整的官方文档在这里：Build Settings Reference</li>
+<li><strong>Build settings</strong>:则是对编译工作的细节进行设定，在这个窗口里可以看见大量的设置选项，从编译到打包再到代码签名都有，这里要注意 settings 的 section 分类，同时一般通过右侧的 inspector 就可以很好的理解选项的意义了。  </li>
+</ul>
+</span>
       
     </div>
 
@@ -307,17 +322,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/25/gitTest/" rel="next" title="Git 操作练习">
-                <i class="fa fa-chevron-left"></i> Git 操作练习
+              <a href="/2016/07/29/This Python/" rel="next" title="Python 学习笔记">
+                <i class="fa fa-chevron-left"></i> Python 学习笔记
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/29/This Python/" rel="prev" title="Python 学习笔记">
-                Python 学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -344,8 +355,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/25/Command/"
-           data-title="iOS,macOS相关Tips" data-url="http://yoursite.com/2016/07/25/Command/">
+      <div class="ds-thread" data-thread-key="2016/10/17/Command/"
+           data-title="iOS,macOS相关Tips" data-url="http://yoursite.com/2016/10/17/Command/">
       </div>
     
   </div>
@@ -453,7 +464,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5E38_u7528_u7684Terminal_u547D_u4EE4"><span class="nav-number">1.</span> <span class="nav-text">常用的Terminal命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode_u76F8_u5173"><span class="nav-number">2.</span> <span class="nav-text">Xcode相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5E38_u7528_u4EE3_u7801_u5757"><span class="nav-number">3.</span> <span class="nav-text">常用代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode_u5E38_u7528_u5FEB_u6377_u952E"><span class="nav-number">4.</span> <span class="nav-text">Xcode常用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode_u5BF9_u5E94_u67B6_u6784"><span class="nav-number">5.</span> <span class="nav-text">Xcode对应架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MarkDown_u6587_u4EF6_u751F_u6210HTML_u6587_u4EF6"><span class="nav-number">6.</span> <span class="nav-text">MarkDown文件生成HTML文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5176_u4ED6"><span class="nav-number">1.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5E38_u7528_u7684Terminal_u547D_u4EE4"><span class="nav-number">1.1.</span> <span class="nav-text">常用的Terminal命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MarkDown_u6587_u4EF6_u751F_u6210HTML_u6587_u4EF6"><span class="nav-number">1.2.</span> <span class="nav-text">MarkDown文件生成HTML文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode_u76F8_u5173"><span class="nav-number">2.</span> <span class="nav-text">Xcode相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode_u6E05_u7406"><span class="nav-number">2.1.</span> <span class="nav-text">Xcode清理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5E38_u7528_u4EE3_u7801_u5757"><span class="nav-number">2.2.</span> <span class="nav-text">常用代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode_u5E38_u7528_u5FEB_u6377_u952E"><span class="nav-number">2.3.</span> <span class="nav-text">Xcode常用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode_u5BF9_u5E94_u67B6_u6784"><span class="nav-number">2.4.</span> <span class="nav-text">Xcode对应架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS_u76F8_u5173"><span class="nav-number">3.</span> <span class="nav-text">iOS相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4ECE_u6E90_u7801_u5230APP"><span class="nav-number">3.1.</span> <span class="nav-text">从源码到APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Build_phases__26amp_3B_26amp_3B_Build_rules__26amp_3B_26amp_3B_Build_settings"><span class="nav-number">3.2.</span> <span class="nav-text">Build phases && Build rules && Build settings</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
