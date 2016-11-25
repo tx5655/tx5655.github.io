@@ -54,7 +54,7 @@
 <meta name="description" content="iOS 开发中我们经常用 CocoaPods 来安装第三方库，CocoaPods 可以帮助我们处理依赖，管理版本等等，还是挺方便的，如果我们公司内部有一个比较独立的组件，不相开源但是又想用 CocoaPods 来管理，可不可以呢？当然是可以的，CocoaPods 也提供了比较好的支持，可以自定义源，这样只要我们把 Pods 源和组件的源代码的权限放到私有的空间里，其他和公开仓库的作法是类似的。下面">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cocoapods 创建私有Pod">
-<meta property="og:url" content="http://yoursite.com/2016/11/23/PrivatePod/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/11/25/PrivatePod/index.html">
 <meta property="og:site_name" content="当下的力量">
 <meta property="og:description" content="iOS 开发中我们经常用 CocoaPods 来安装第三方库，CocoaPods 可以帮助我们处理依赖，管理版本等等，还是挺方便的，如果我们公司内部有一个比较独立的组件，不相开源但是又想用 CocoaPods 来管理，可不可以呢？当然是可以的，CocoaPods 也提供了比较好的支持，可以自定义源，这样只要我们把 Pods 源和组件的源代码的权限放到私有的空间里，其他和公开仓库的作法是类似的。下面">
 <meta property="og:image" content="http://yoursite.com/img/PrivatePod/QQ20161123-0@2x.png">
@@ -65,7 +65,7 @@
 <meta property="og:image" content="http://yoursite.com/img/PrivatePod/QQ20161123-5@2x.png">
 <meta property="og:image" content="http://yoursite.com/img/PrivatePod/QQ20161123-6@2x.png">
 <meta property="og:image" content="http://yoursite.com/img/PrivatePod/QQ20161123-7@2x.png">
-<meta property="og:updated_time" content="2016-11-23T10:32:24.000Z">
+<meta property="og:updated_time" content="2016-11-25T01:42:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoapods 创建私有Pod">
 <meta name="twitter:description" content="iOS 开发中我们经常用 CocoaPods 来安装第三方库，CocoaPods 可以帮助我们处理依赖，管理版本等等，还是挺方便的，如果我们公司内部有一个比较独立的组件，不相开源但是又想用 CocoaPods 来管理，可不可以呢？当然是可以的，CocoaPods 也提供了比较好的支持，可以自定义源，这样只要我们把 Pods 源和组件的源代码的权限放到私有的空间里，其他和公开仓库的作法是类似的。下面">
@@ -229,8 +229,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-11-23T18:32:24+08:00" content="2016-11-23">
-              2016-11-23
+            <time itemprop="dateCreated" datetime="2016-11-25T09:42:06+08:00" content="2016-11-25">
+              2016-11-25
             </time>
           </span>
 
@@ -255,8 +255,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/23/PrivatePod/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/PrivatePod/" itemprop="commentsCount"></span>
+                <a href="/2016/11/25/PrivatePod/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/25/PrivatePod/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -310,7 +310,7 @@
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add PrivateSpecsRepo <span class="string">http:</span><span class="comment">//<span class="label">xxx/PrivateSpecsRepo.git</span></span></span><br></pre></td></tr></table></figure>
 <p>完成后，进入自己电脑的 <strong>~/.cocoapods/repos</strong>的目录，检查是否创建了 PrivateSpecsRepo 目录。</p>
 <h3 id="u4E0A_u4F20_u5DE5_u7A0B"><a href="#u4E0A_u4F20_u5DE5_u7A0B" class="headerlink" title="上传工程"></a>上传工程</h3><p>创建一个工程的git目录地址，回到工程的根目录，执行如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">"first commit"</span></span><br><span class="line">git remote <span class="keyword">add</span> origin https://xxx/GetMyIPAddress.git</span><br><span class="line">git push origin <span class="keyword">master</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">"first commit"</span></span><br><span class="line">git remote <span class="keyword">add</span> origin https://xxx/GetMyIPAddress.git</span><br><span class="line">git push origin <span class="keyword">master</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="u4E0A_u4F20_podSpec"><a href="#u4E0A_u4F20_podSpec" class="headerlink" title="上传 podSpec"></a>上传 podSpec</h3><p>1 我们已经创建了 podspec 文件<br>2 我们已经创建了 specRepo ，也在本地做了<strong>repo add</strong>操作,但是远程的 repo 的 git 里面还是空的。<br>回到工程的根目录，执行如下操作：(参数是 1 repo的名字 2 spec文件)</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">pod</span> repo <span class="keyword">push </span>PrivateSpecsRepo GetMyIPAddress.podspec</span><br></pre></td></tr></table></figure>
 <p>有错误的话就继续修改 spec 文件，完了再次提交。成功后进入<strong>~/.cocoapods/repos</strong>的目录，显示如下就是正常。<br><img src="/img/PrivatePod/QQ20161123-6@2x.png" alt="">  </p>
@@ -368,8 +368,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/23/PrivatePod/"
-           data-title="Cocoapods 创建私有Pod" data-url="http://yoursite.com/2016/11/23/PrivatePod/">
+      <div class="ds-thread" data-thread-key="2016/11/25/PrivatePod/"
+           data-title="Cocoapods 创建私有Pod" data-url="http://yoursite.com/2016/11/25/PrivatePod/">
       </div>
     
   </div>
