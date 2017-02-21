@@ -1,0 +1,753 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Fastlane," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Mac 环境下 Ruby 的安装与升级检查自己的 Ruby 版本 ruby -v
+RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的版本管理和Gem库管理(gemset)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fastlane 的安装与使用">
+<meta property="og:url" content="http://yoursite.com/2017/02/21/Fastlane/index.html">
+<meta property="og:site_name" content="当下的力量">
+<meta property="og:description" content="Mac 环境下 Ruby 的安装与升级检查自己的 Ruby 版本 ruby -v
+RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的版本管理和Gem库管理(gemset)。">
+<meta property="og:image" content="http://yoursite.com/img/QQ20170220-3@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/QQ20170220-55@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-102937@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-105311@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-105330@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-110152@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-111618@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-111816@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-112333@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-113549@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-123951@2x.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-124305@2x.png">
+<meta property="og:updated_time" content="2017-02-21T04:57:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fastlane 的安装与使用">
+<meta name="twitter:description" content="Mac 环境下 Ruby 的安装与升级检查自己的 Ruby 版本 ruby -v
+RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的版本管理和Gem库管理(gemset)。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Fastlane 的安装与使用 | 当下的力量 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">当下的力量</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Winter is comming！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Fastlane 的安装与使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2017-02-21T12:57:07+08:00" content="2017-02-21">
+              2017-02-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Fastlane-Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Fastlane Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/21/Fastlane/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/21/Fastlane/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="Mac__u73AF_u5883_u4E0B_Ruby__u7684_u5B89_u88C5_u4E0E_u5347_u7EA7"><a href="#Mac__u73AF_u5883_u4E0B_Ruby__u7684_u5B89_u88C5_u4E0E_u5347_u7EA7" class="headerlink" title="Mac 环境下 Ruby 的安装与升级"></a>Mac 环境下 Ruby 的安装与升级</h2><p>检查自己的 Ruby 版本 <code>ruby -v</code></p>
+<h3 id="RVM__28Ruby_Version_Manager_29"><a href="#RVM__28Ruby_Version_Manager_29" class="headerlink" title="RVM (Ruby Version Manager)"></a>RVM (Ruby Version Manager)</h3><p>Ruby版本管理器来升级ruby，RVM包含了Ruby的版本管理和Gem库管理(gemset)。  </p>
+<hr>
+<a id="more"></a>  
+<h4 id="RVM_u5B89_u88C5"><a href="#RVM_u5B89_u88C5" class="headerlink" title="RVM安装"></a>RVM安装</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -<span class="constant">L</span> get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
+<h4 id="u4E4B_u540E_u5C31_u662F_u7B49_u5F85_u4E00_u6BB5_u65F6_u95F4_u4E4B_u540E_uFF0C_u5C31_u53EF_u4EE5_u5B89_u88C5_u6210_u529F_u4E86_uFF0C_u4F7F_u7528_u4EE5_u4E0B_u547D_u4EE4_u6765_u9A8C_u8BC1"><a href="#u4E4B_u540E_u5C31_u662F_u7B49_u5F85_u4E00_u6BB5_u65F6_u95F4_u4E4B_u540E_uFF0C_u5C31_u53EF_u4EE5_u5B89_u88C5_u6210_u529F_u4E86_uFF0C_u4F7F_u7528_u4EE5_u4E0B_u547D_u4EE4_u6765_u9A8C_u8BC1" class="headerlink" title="之后就是等待一段时间之后，就可以安装成功了，使用以下命令来验证"></a>之后就是等待一段时间之后，就可以安装成功了，使用以下命令来验证</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br><span class="line">然后</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>如果没有报错，说明安装正常。</p>
+<h4 id="u9A8C_u8BC1_u7248_u672C_u53F7"><a href="#u9A8C_u8BC1_u7248_u672C_u53F7" class="headerlink" title="验证版本号"></a>验证版本号</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm -v</span><br></pre></td></tr></table></figure>
+<p>如果出现rvm（版本号）…………..基本就算是安装RVM成功了。</p>
+<h3 id="u4F7F_u7528RVM_u5347_u7EA7Ruby"><a href="#u4F7F_u7528RVM_u5347_u7EA7Ruby" class="headerlink" title="使用RVM升级Ruby"></a>使用RVM升级Ruby</h3><p>列出已知ruby的版本:  </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm list known</span><br></pre></td></tr></table></figure>
+<p><img src="/img/QQ20170220-3@2x.png" alt=""><br>选定自己想要的版本号直接安装，前提是电脑已经安装了 Xcode ，这里需要 Xcode 的命令行工具：  </p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-<span class="built_in">select</span> <span class="comment">--install</span></span><br></pre></td></tr></table></figure>
+<p>然后执行：  </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm install <span class="number">2.4</span></span><br></pre></td></tr></table></figure>
+<p>如果在执行命令是报错， <strong>brew update</strong>的错误的话，可以按如下方式修改， <a href="http://stackoverflow.com/questions/14113427/brew-update-failed-untracked-working-tree-files-would-be-overwritten-by-merge" target="_blank" rel="external">参考</a>  </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="variable">$(</span>brew --prefix)</span><br><span class="line">git clean -fd</span><br><span class="line">git reset --hard</span><br><span class="line">sudo chown -<span class="constant">R</span> <span class="string">`whoami`</span> <span class="string">`brew --prefix`</span></span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
+<p>执行没有问题的话，然后继续执行  <code>rvm install 2.4</code></p>
+<p>过程稍微需要点时间，中间需要手动输入密码和手动按回车。完成后检查版本：<br><img src="/img/QQ20170220-55@2x.png" alt="">  </p>
+<h2 id="u5B89_u88C5_Fastlane"><a href="#u5B89_u88C5_Fastlane" class="headerlink" title="安装 Fastlane"></a>安装 Fastlane</h2><p>如果以上安装正常，也就是在环境：macOS or Linux with Ruby 2.0.0 or above，执行如下命令。<a href="https://docs.fastlane.tools/" target="_blank" rel="external">参考</a>  </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install fastlane -<span class="constant">NV</span></span><br></pre></td></tr></table></figure>
+<p>安装完成后使用，<code>fastlane --version</code> 检查安装版本。  </p>
+<h2 id="Fastlane__u4F7F_u7528_u6B65_u9AA4"><a href="#Fastlane__u4F7F_u7528_u6B65_u9AA4" class="headerlink" title="Fastlane 使用步骤"></a>Fastlane 使用步骤</h2><h3 id="u8FDB_u5165_u5230_u5F53_u524D_u7684_u5DE5_u7A0B_u76EE_u5F55_uFF0Cproject_u6587_u4EF6_u6240_u5728_u76EE_u5F55"><a href="#u8FDB_u5165_u5230_u5F53_u524D_u7684_u5DE5_u7A0B_u76EE_u5F55_uFF0Cproject_u6587_u4EF6_u6240_u5728_u76EE_u5F55" class="headerlink" title="进入到当前的工程目录，project文件所在目录"></a>进入到当前的工程目录，project文件所在目录</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastlane init</span><br></pre></td></tr></table></figure>
+<p>过程中需要填写项目的 APPID（取消二次验证）、密码以及相关信息，执行完毕后悔生成大致如下的工程目录：<br><img src="/img/Fastlane/QQ20170221-102937@2x.png" alt="">  </p>
+<ul>
+<li>Appfile, 用于存放 app ID 和你的 Apple ID。</li>
+<li>Fastfile, 用于管理你所创建的 lane，lane 则会调用 action。</li>
+<li>Snapfile, 用于指定需要进行屏幕截图的设备类型和语种。</li>
+</ul>
+<h3 id="u4F7F_u7528_gym__u81EA_u52A8_u6253_u5305"><a href="#u4F7F_u7528_gym__u81EA_u52A8_u6253_u5305" class="headerlink" title="使用 gym 自动打包"></a>使用 gym 自动打包</h3><p>首先进入工程中，把证书文件配置妥当。打开 Fastfile 添加如下 ，<a href="https://docs.fastlane.tools/actions/#gym" target="_blank" rel="external">官方参数列表</a>  </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lane <span class="symbol">:beta</span> <span class="keyword">do</span></span><br><span class="line">  gym(<span class="symbol">scheme:</span> <span class="string">"FindMyCar"</span>)<span class="comment"># scheme 就是你的 主target名字</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>完成后执行 <code>fastlane beta</code> , beta 就是指执行的 lane 的名字。<br><img src="/img/Fastlane/QQ20170221-105311@2x.png" alt=""><br>会把打包好的文件放在当前的目录下：<br><img src="/img/Fastlane/QQ20170221-105330@2x.png" alt="">   </p>
+<h3 id="u4F7F_u7528_snapshot__u622A_u53D6_u56FE_u7247"><a href="#u4F7F_u7528_snapshot__u622A_u53D6_u56FE_u7247" class="headerlink" title="使用 snapshot 截取图片"></a>使用 snapshot 截取图片</h3><p>首先在工程目录执行 <code>fastlane snapshot init</code> ,会生成如下文件到目录：<br><img src="/img/Fastlane/QQ20170221-110152@2x.png" alt=""><br>然后打开自己的工程，检查有没有添加过 UITest 的target，如果没有就手动添加：<code>File-&gt;New-&gt;target</code><br><img src="/img/Fastlane/QQ20170221-111618@2x.png" alt="">   </p>
+<h4 id="u628A_u751F_u6210_u7684-/SnapshotHelper-swift_u6587_u4EF6_u62D6_u52A8_u5230_u8BE5_target__u5E95_u4E0B_uFF1A"><a href="#u628A_u751F_u6210_u7684-/SnapshotHelper-swift_u6587_u4EF6_u62D6_u52A8_u5230_u8BE5_target__u5E95_u4E0B_uFF1A" class="headerlink" title="把生成的./SnapshotHelper.swift文件拖动到该 target 底下："></a>把生成的<code>./SnapshotHelper.swift</code>文件拖动到该 target 底下：</h4><p><img src="/img/Fastlane/QQ20170221-111816@2x.png" alt=""><br>由于该文件是 swift 文件，需要在 Xcode 中配置一下，OC才可以引用该类文件：<br>1、选中targets-&gt;build settings -&gt;packing-&gt;Product Module Name 中设置模块名，这个名称很重要 swift 的头文件就是根据这个来命名的。<br>2、在工程中添加引用头文件<br><img src="/img/Fastlane/QQ20170221-112333@2x.png" alt="">   </p>
+<p>这样，工程中如查Swift要使用OC,则把需要使用的OC类的头文件，全写在MixDemo-Bridging-Header.h里。同样如果OC中所使用的swift类，只需要Clean一遍，再编译就可以了，但不要忘了导入SwiftModule-swift.h哦（名称自取，但-swift.h是固定的），另外还有一个需要读者注意的。<a href="http://blog.sina.com.cn/s/blog_8d1bc23f0102v5tl.html" target="_blank" rel="external">参考链接</a>  </p>
+<h4 id="u521D_u59CB_u5316_u6D4B_u8BD5_u4EE3_u7801"><a href="#u521D_u59CB_u5316_u6D4B_u8BD5_u4EE3_u7801" class="headerlink" title="初始化测试代码"></a>初始化测试代码</h4><p>在自己的测试类中的 <strong>setUp</strong> 方法中新增代码如下：  </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">XC<span class="built_in">UIApplication</span> *app = [[XC<span class="built_in">UIApplication</span> alloc] init];</span><br><span class="line">[Snapshot setupSnapshot:app];</span><br><span class="line">[app launch];</span><br><span class="line">来替换掉系统自带的：</span><br><span class="line">[[[XC<span class="built_in">UIApplication</span> alloc] init] launch];</span><br></pre></td></tr></table></figure>
+<p>完成以后，执行 <code>CMD + U</code> 也就是执行测试，检查是否会报错，如有错误，继续检查以上设置和代码编写。</p>
+<h4 id="u5F55_u5236_u6D4B_u8BD5_u6D41_u7A0B"><a href="#u5F55_u5236_u6D4B_u8BD5_u6D41_u7A0B" class="headerlink" title="录制测试流程"></a>录制测试流程</h4><p>snapshot 截图的原理其实是在利用 UITest 的录制功能，在相应的地方埋入截图的代码。<br>首先把鼠标焦点放在 <strong>testExample</strong> 的方法内，在录制的时候代码默认会在鼠标焦点的方法中自动生成。<br>然后点击左下角的录制按钮<br><img src="/img/Fastlane/QQ20170221-113549@2x.png" alt=""><br>开始录制的时候，Xcode 会自动启动模拟器，选择你要展示的页面，同时你可以看到自动生成的代码，保证你要截图的地方都被你点出来过就OK了，点击Stop。<br>由于自动生成的代码对中文支持的不好，需要修改所有出现的 Unicode 为中文字符，然后编译，检查是否报错。  </p>
+<h4 id="u63D2_u5165_u622A_u56FE_u7684_u57CB_u70B9"><a href="#u63D2_u5165_u622A_u56FE_u7684_u57CB_u70B9" class="headerlink" title="插入截图的埋点"></a>插入截图的埋点</h4><p>阅读自动生成的代码，在具体点的代码处埋设截图的代码：  </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Swift: snapshot(<span class="string">"01LoginScreen"</span>)</span><br><span class="line">Objective C: [Snapshot snapshot:<span class="string">@"01LoginScreen"</span> waitForLoadingIndicator:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
+<p>完成后，按自己的需求编辑 <code>Snapfile</code>文件：  </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># A list of devices you want to take the screenshots from</span></span><br><span class="line"> devices([</span><br><span class="line">   <span class="string">"iPhone 6"</span>,</span><br><span class="line">   <span class="string">"iPhone 6 Plus"</span>,</span><br><span class="line"> ])</span><br><span class="line"></span><br><span class="line">languages([</span><br><span class="line">  <span class="string">"en-US"</span>,</span><br><span class="line">  [<span class="string">"pt"</span>, <span class="string">"pt_BR"</span>] <span class="comment"># Portuguese with Brazilian locale</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># The name of the scheme which contains the UI Tests</span></span><br><span class="line"><span class="comment"># scheme "SchemeName"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Where should the resulting screenshots be stored?</span></span><br><span class="line"><span class="comment"># output_directory "./screenshots"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># clear_previous_screenshots true # remove the '#' to clear all previously generated screenshots before creating new ones</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Choose which project/workspace to use</span></span><br><span class="line"> project <span class="string">"./FindMyCar.xcodeproj"</span></span><br><span class="line"><span class="comment"># workspace "./Project.xcworkspace"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Arguments to pass to the app on launch. See https://github.com/fastlane/snapshot#launch-arguments</span></span><br><span class="line"><span class="comment"># launch_arguments(["-favColor red"])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># For more information about all available options run</span></span><br><span class="line"><span class="comment"># fastlane snapshot --help</span></span><br></pre></td></tr></table></figure>
+<p>完成后执行 <code>fastlane action snapshot</code>。正常结果如下：<br><img src="/img/Fastlane/QQ20170221-123951@2x.png" alt=""><br>自动生成的的截图：<br><img src="/img/Fastlane/QQ20170221-124305@2x.png" alt=""> </p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Fastlane/" rel="tag">#Fastlane</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/Cocoapods/" rel="next" title="Mac OS X 10.12.1 安装cocoapods">
+                <i class="fa fa-chevron-left"></i> Mac OS X 10.12.1 安装cocoapods
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/21/Fastlane/"
+           data-title="Fastlane 的安装与使用" data-url="http://yoursite.com/2017/02/21/Fastlane/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/img/avatar.jpg" alt="Tyler Li" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Tyler Li</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">凌冬将至!</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tx5655" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2173969642/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac__u73AF_u5883_u4E0B_Ruby__u7684_u5B89_u88C5_u4E0E_u5347_u7EA7"><span class="nav-number">1.</span> <span class="nav-text">Mac 环境下 Ruby 的安装与升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RVM__28Ruby_Version_Manager_29"><span class="nav-number">1.1.</span> <span class="nav-text">RVM (Ruby Version Manager)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RVM_u5B89_u88C5"><span class="nav-number">1.1.1.</span> <span class="nav-text">RVM安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E4B_u540E_u5C31_u662F_u7B49_u5F85_u4E00_u6BB5_u65F6_u95F4_u4E4B_u540E_uFF0C_u5C31_u53EF_u4EE5_u5B89_u88C5_u6210_u529F_u4E86_uFF0C_u4F7F_u7528_u4EE5_u4E0B_u547D_u4EE4_u6765_u9A8C_u8BC1"><span class="nav-number">1.1.2.</span> <span class="nav-text">之后就是等待一段时间之后，就可以安装成功了，使用以下命令来验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u9A8C_u8BC1_u7248_u672C_u53F7"><span class="nav-number">1.1.3.</span> <span class="nav-text">验证版本号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528RVM_u5347_u7EA7Ruby"><span class="nav-number">1.2.</span> <span class="nav-text">使用RVM升级Ruby</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5_Fastlane"><span class="nav-number">2.</span> <span class="nav-text">安装 Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane__u4F7F_u7528_u6B65_u9AA4"><span class="nav-number">3.</span> <span class="nav-text">Fastlane 使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u8FDB_u5165_u5230_u5F53_u524D_u7684_u5DE5_u7A0B_u76EE_u5F55_uFF0Cproject_u6587_u4EF6_u6240_u5728_u76EE_u5F55"><span class="nav-number">3.1.</span> <span class="nav-text">进入到当前的工程目录，project文件所在目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_gym__u81EA_u52A8_u6253_u5305"><span class="nav-number">3.2.</span> <span class="nav-text">使用 gym 自动打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_snapshot__u622A_u53D6_u56FE_u7247"><span class="nav-number">3.3.</span> <span class="nav-text">使用 snapshot 截取图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u628A_u751F_u6210_u7684-/SnapshotHelper-swift_u6587_u4EF6_u62D6_u52A8_u5230_u8BE5_target__u5E95_u4E0B_uFF1A"><span class="nav-number">3.3.1.</span> <span class="nav-text">把生成的./SnapshotHelper.swift文件拖动到该 target 底下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u521D_u59CB_u5316_u6D4B_u8BD5_u4EE3_u7801"><span class="nav-number">3.3.2.</span> <span class="nav-text">初始化测试代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5F55_u5236_u6D4B_u8BD5_u6D41_u7A0B"><span class="nav-number">3.3.3.</span> <span class="nav-text">录制测试流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u63D2_u5165_u622A_u56FE_u7684_u57CB_u70B9"><span class="nav-number">3.3.4.</span> <span class="nav-text">插入截图的埋点</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tyler Li</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tx5655"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

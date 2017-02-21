@@ -220,6 +220,217 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/21/Fastlane/" itemprop="url">
+                  Fastlane 的安装与使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2017-02-21T12:57:07+08:00" content="2017-02-21">
+              2017-02-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Fastlane-Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Fastlane Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/21/Fastlane/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/21/Fastlane/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="Mac__u73AF_u5883_u4E0B_Ruby__u7684_u5B89_u88C5_u4E0E_u5347_u7EA7"><a href="#Mac__u73AF_u5883_u4E0B_Ruby__u7684_u5B89_u88C5_u4E0E_u5347_u7EA7" class="headerlink" title="Mac 环境下 Ruby 的安装与升级"></a>Mac 环境下 Ruby 的安装与升级</h2><p>检查自己的 Ruby 版本 <code>ruby -v</code></p>
+<h3 id="RVM__28Ruby_Version_Manager_29"><a href="#RVM__28Ruby_Version_Manager_29" class="headerlink" title="RVM (Ruby Version Manager)"></a>RVM (Ruby Version Manager)</h3><p>Ruby版本管理器来升级ruby，RVM包含了Ruby的版本管理和Gem库管理(gemset)。  </p>
+<hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/21/Fastlane/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/20/Cocoapods/" itemprop="url">
+                  Mac OS X 10.12.1 安装cocoapods
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2017-02-20T11:45:43+08:00" content="2017-02-20">
+              2017-02-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ios/" itemprop="url" rel="index">
+                    <span itemprop="name">ios</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/20/Cocoapods/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/Cocoapods/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><strong>2016年11月17日 ，原淘宝的镜像已经失效，最新：</strong>  </p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">http:</span>//gems.ruby-china<span class="preprocessor">.org</span>/</span><br></pre></td></tr></table></figure>
+<h2 id="1_u3001_u8BF7_u5C3D_u53EF_u80FD_u7528_u6BD4_u8F83_u65B0_u7684_RubyGems__u7248_u672C_uFF0C_u5EFA_u8BAE_2-6-x__u4EE5_u4E0A"><a href="#1_u3001_u8BF7_u5C3D_u53EF_u80FD_u7528_u6BD4_u8F83_u65B0_u7684_RubyGems__u7248_u672C_uFF0C_u5EFA_u8BAE_2-6-x__u4EE5_u4E0A" class="headerlink" title="1、请尽可能用比较新的 RubyGems 版本，建议 2.6.x 以上."></a>1、请尽可能用比较新的 RubyGems 版本，建议 2.6.x 以上.</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gem update --system <span class="preprocessor"># 这里请翻墙一下</span></span><br><span class="line">$ gem -v</span><br><span class="line"><span class="number">2.6</span><span class="number">.3</span></span><br></pre></td></tr></table></figure>
+<hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/20/Cocoapods/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/16/PrivatePod/" itemprop="url">
                   Cocoapods 创建私有Pod
                 </a>
@@ -387,112 +598,6 @@
 <hr>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/29/Command/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/29/Cocoapods/" itemprop="url">
-                  Mac OS X 10.12.1 安装cocoapods
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-12-29T11:30:29+08:00" content="2016-12-29">
-              2016-12-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">ios</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/29/Cocoapods/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/29/Cocoapods/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><strong>2016年11月17日 ，原淘宝的镜像已经失效，最新：</strong>  </p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">http:</span>//gems.ruby-china<span class="preprocessor">.org</span>/</span><br></pre></td></tr></table></figure>
-<h2 id="1_u3001_u8BF7_u5C3D_u53EF_u80FD_u7528_u6BD4_u8F83_u65B0_u7684_RubyGems__u7248_u672C_uFF0C_u5EFA_u8BAE_2-6-x__u4EE5_u4E0A"><a href="#1_u3001_u8BF7_u5C3D_u53EF_u80FD_u7528_u6BD4_u8F83_u65B0_u7684_RubyGems__u7248_u672C_uFF0C_u5EFA_u8BAE_2-6-x__u4EE5_u4E0A" class="headerlink" title="1、请尽可能用比较新的 RubyGems 版本，建议 2.6.x 以上."></a>1、请尽可能用比较新的 RubyGems 版本，建议 2.6.x 以上.</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gem update --system <span class="preprocessor"># 这里请翻墙一下</span></span><br><span class="line">$ gem -v</span><br><span class="line"><span class="number">2.6</span><span class="number">.3</span></span><br></pre></td></tr></table></figure>
-<hr>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/29/Cocoapods/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1088,21 +1193,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
