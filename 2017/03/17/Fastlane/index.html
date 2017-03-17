@@ -55,7 +55,7 @@
 RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的版本管理和Gem库管理(gemset)。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fastlane 的安装与使用">
-<meta property="og:url" content="http://yoursite.com/2017/03/02/Fastlane/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/03/17/Fastlane/index.html">
 <meta property="og:site_name" content="当下的力量">
 <meta property="og:description" content="Mac 环境下 Ruby 的安装与升级检查自己的 Ruby 版本 ruby -v
 RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的版本管理和Gem库管理(gemset)。">
@@ -73,7 +73,15 @@ RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的
 <meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170221-124305@2x.png">
 <meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170302-151706@2x.png">
 <meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170302-154949@2x.png">
-<meta property="og:updated_time" content="2017-03-02T07:56:08.000Z">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-101133.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-101232.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-102559.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-102926.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-103255.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-103311.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-104111.png">
+<meta property="og:image" content="http://yoursite.com/img/Fastlane/QQ20170317-104208.png">
+<meta property="og:updated_time" content="2017-03-17T03:37:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fastlane 的安装与使用">
 <meta name="twitter:description" content="Mac 环境下 Ruby 的安装与升级检查自己的 Ruby 版本 ruby -v
@@ -238,8 +246,8 @@ RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2017-03-02T15:56:08+08:00" content="2017-03-02">
-              2017-03-02
+            <time itemprop="dateCreated" datetime="2017-03-17T11:37:17+08:00" content="2017-03-17">
+              2017-03-17
             </time>
           </span>
 
@@ -264,8 +272,8 @@ RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/02/Fastlane/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/02/Fastlane/" itemprop="commentsCount"></span>
+                <a href="/2017/03/17/Fastlane/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/Fastlane/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -333,108 +341,28 @@ RVM (Ruby Version Manager)Ruby版本管理器来升级ruby，RVM包含了Ruby的
 <p>执行完成后，Action会返回一个组装好的字符串，输出字符串如下：<br><img src="/img/Fastlane/QQ20170302-151706@2x.png" alt=""> </p>
 <h3 id="u53D1_u9001_u90AE_u4EF6"><a href="#u53D1_u9001_u90AE_u4EF6" class="headerlink" title="发送邮件"></a>发送邮件</h3><p>这里首先介绍一个可以执行 shell 脚本的 Action <code>sh</code> <a href="https://docs.fastlane.tools/actions/#sh" target="_blank" rel="external">参考</a><br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sh(<span class="string">"git commit -m 'My message'"</span>)</span><br><span class="line">或者</span><br><span class="line">sh(<span class="string">"ls"</span>)</span><br><span class="line">sh(<span class="string">"pod install"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>以上代码就等同于你打开 terminal 手动输入命令。借助此功能我们可以编写自己的脚本然后自动执行。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh(<span class="string">"python mailTestGroup.py"</span>) <span class="comment">#执行mailTestGroup.py</span></span><br></pre></td></tr></table></figure></p>
-<p>这里发邮件的脚本是利用 python 写的，代码如下 ：  </p>
-<pre><code class="python"><span class="comment"># -*- coding: UTF-8 -*-</span>
-<span class="keyword">import</span> string
-<span class="keyword">from</span> sys <span class="keyword">import</span> argv
-<span class="comment">#解包传入的参数，拿到标题和文件内容</span>
-script,title,message = argv
-<span class="comment">#公司SMTP邮件服务器</span>
-SMTP_SERVER = <span class="string">'smtp.263.net'</span>
-SMTP_PORT = <span class="number">25</span>
-<span class="comment">#################################################</span>
-<span class="comment"># 自己手动配置区域，请手动更改为自己的</span>
-SMTP_USERNAME = <span class="string">'xxxx@leadeon.cn'</span>
-SMTP_PASSWORD = <span class="string">'xxxx'</span>
-<span class="comment"># 发件人，收件人，抄送</span>
-from_addr = SMTP_USERNAME
-to_addrs = [<span class="string">'xxxx@leadeon.cn'</span>]
-acc = [<span class="string">'xxxxx@qq.com'</span>,<span class="string">'xxxx@qq.com'</span>]
-<span class="comment">#附件位置需要和gym输出的路径保持一致</span>
-attfile = <span class="string">'./gym/xxxx.ipa'</span>
-<span class="comment">#标题</span>
-subject = title
-<span class="comment">#过滤邮件内容  ###为正常提交  ***为bug修复 没有需求的话可以去掉此部分代码 content = message就好了</span>
-norArr = <span class="string">''</span>
-bugArr = <span class="string">''</span> 
-<span class="keyword">for</span> log <span class="keyword">in</span> message.split(<span class="string">'\n'</span>):
-    <span class="keyword">if</span> log.find(<span class="string">'###'</span>) != <span class="number">-1</span>:
-        log.replace(<span class="string">'###'</span>,<span class="string">''</span>)
-        norArr = norArr + log + <span class="string">'\n'</span>
-    <span class="keyword">elif</span> log.find(<span class="string">'***'</span>) != <span class="number">-1</span>:
-        log.replace(<span class="string">'***'</span>,<span class="string">''</span>)
-        bugArr = bugArr + log + <span class="string">'\n'</span>
-outputMsg = <span class="string">''</span>
-<span class="keyword">if</span> norArr != <span class="string">''</span>:
-    outputMsg = outputMsg + <span class="string">'新提交'</span> + <span class="string">'\n'</span> + norArr
-<span class="keyword">if</span> bugArr != <span class="string">''</span>
-    outputMsg = outputMsg + <span class="string">'修复问题'</span> + <span class="string">'\n'</span> + bugArr
-
-content = outputMsg
-<span class="comment">#################################################</span>
-
-<span class="comment"># 以下是真正的发送代码，没有必要请勿改动</span>
-<span class="comment">#导入smtplib和MIMEText  </span>
-<span class="keyword">import</span> smtplib  
-<span class="keyword">from</span> email.Header <span class="keyword">import</span> Header  
-<span class="keyword">from</span> email.MIMEText <span class="keyword">import</span> MIMEText  
-<span class="keyword">from</span> email.MIMEMultipart <span class="keyword">import</span> MIMEMultipart  
-<span class="keyword">import</span> os.path
-
-<span class="comment">#创建一个带附件的实例</span>
-msg = MIMEMultipart()  
-
-<span class="comment">#添加邮件内容  </span>
-<span class="comment">#注意，要指定邮件内容的编码为utf-8，否则中文会有乱码  </span>
-text_msg = MIMEText(content,<span class="string">'plain'</span>,<span class="string">'utf-8'</span>)  
-msg.attach(text_msg)  
-
-<span class="comment">#构造附件  </span>
-<span class="comment">#注意：传入的参数attfile为unicode，否则带中文的目录或名称的文件读不出来  </span>
-<span class="comment">#      basename 为文件名称，由于传入的参数attfile为unicode编码，此处的basename也为unicode编码  </span>
-basename = os.path.basename(attfile)  
-
-<span class="comment">#注意：指定att的编码方式为gb2312  </span>
-att = MIMEText(open(attfile, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'gb2312'</span>)  
-att[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span>  
-
-<span class="comment">#注意：此处basename要转换为gb2312编码，否则中文会有乱码。  </span>
-<span class="comment">#      特别，此处的basename为unicode编码，所以可以用basename.encode('gb2312')  </span>
-<span class="comment">#            如果basename为utf-8编码，要用basename.decode('utf-8').encode('gb2312')  </span>
-att[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename=%s'</span> % basename.encode(<span class="string">'gb2312'</span>)  
-msg.attach(att)  
-
-<span class="comment">#加邮件头  </span>
-<span class="comment">#但是msg['to']并没有在后面被使用，这么写明显是不合理的，但是这就是stmplib的bug。你只有这样写才能群发邮件</span>
-msg[<span class="string">'to'</span>] = <span class="string">","</span>.join(to_addrs)
-msg[<span class="string">'from'</span>] = from_addr
-msg[<span class="string">'Cc'</span>] = <span class="string">","</span>.join(acc)
-<span class="comment">#主题指定utf-8编码，否则中文会有乱码  </span>
-msg[<span class="string">'subject'</span>] = Header(subject, <span class="string">'utf-8'</span>)  
-
-<span class="comment">#发送邮件  </span>
-server = smtplib.SMTP(SMTP_SERVER)  
-server.login(SMTP_USERNAME, SMTP_PASSWORD)
-server.sendmail(msg[<span class="string">'from'</span>], to_addrs + acc,msg.as_string())  
-server.close
-</code></pre>
-<p>代码的逻辑这里不再赘述，这里我们需要做的就是更改自己的邮箱和要发送、抄送的人的邮箱，以及附件的存放地址，邮件的title 和 内容是从外面传入进来的。真正的fastlane中的调用方式如下：  </p>
-<pre><code class="ruby">lane <span class="symbol">:mail</span> <span class="keyword">do</span>
-<span class="comment">#打包到fastlane/gym/下</span>
-gym(<span class="symbol">scheme:</span> <span class="string">"FindMyCar"</span>,<span class="symbol">output_directory:</span> <span class="string">"fastlane/gym/"</span>,) 
-<span class="comment">#拿到获取到的 log</span>
-commitLog = changelog_from_git_commits(
-  <span class="symbol">between:</span> [<span class="string">"31c19ab1c5dd01"</span>, <span class="string">"HEAD"</span>],  <span class="comment"># 指定获取log 的节点，不包括选中的节点</span>
-  <span class="symbol">pretty:</span> <span class="string">"* (%ae) %s"</span>,<span class="comment"># </span>
-  <span class="symbol">merge_commit_filtering:</span> <span class="string">"exclude_merges"</span>
-)
-<span class="comment">#把拿到的log信息包装成字符串</span>
-commit = <span class="string">"'"</span> + commitLog + <span class="string">"'"</span>
-<span class="comment">#包装好的log当成邮件内容传递给发邮件的 python 脚本</span>
-sh(<span class="string">"python mailTestGroup.py '参数测试' <span class="subst">#{commit}</span>"</span>)
-<span class="keyword">end</span>
-</code></pre>
+<p>这里发邮件的脚本是利用 python 写的，代码如下 ：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"><span class="comment">#解包传入的参数，拿到标题和文件内容</span></span><br><span class="line">script,title,message = argv</span><br><span class="line"><span class="comment">#公司SMTP邮件服务器，需要找一下公司的负责人</span></span><br><span class="line">SMTP_SERVER = <span class="string">'smtp.263.net'</span></span><br><span class="line">SMTP_PORT = <span class="number">25</span></span><br><span class="line"><span class="comment">#################################################</span></span><br><span class="line"><span class="comment"># 自己手动配置区域，请手动更改为自己的</span></span><br><span class="line">SMTP_USERNAME = <span class="string">'xxxx@leadeon.cn'</span></span><br><span class="line">SMTP_PASSWORD = <span class="string">'xxxx'</span></span><br><span class="line"><span class="comment"># 发件人，收件人，抄送</span></span><br><span class="line">from_addr = SMTP_USERNAME</span><br><span class="line">to_addrs = [<span class="string">'xxxx@leadeon.cn'</span>]</span><br><span class="line">acc = [<span class="string">'xxxxx@qq.com'</span>,<span class="string">'xxxx@qq.com'</span>]</span><br><span class="line"><span class="comment">#附件位置需要和gym输出的路径保持一致</span></span><br><span class="line">attfile = <span class="string">'./gym/xxxx.ipa'</span></span><br><span class="line"><span class="comment">#标题</span></span><br><span class="line">subject = title</span><br><span class="line"><span class="comment">#过滤邮件内容  ###为正常提交  ***为bug修复 没有需求的话可以去掉此部分代码 content = message就好了</span></span><br><span class="line">norArr = <span class="string">''</span></span><br><span class="line">bugArr = <span class="string">''</span> </span><br><span class="line"><span class="keyword">for</span> log <span class="keyword">in</span> message.split(<span class="string">'\n'</span>):</span><br><span class="line">	<span class="keyword">if</span> log.find(<span class="string">'###'</span>) != -<span class="number">1</span>:</span><br><span class="line">		log.replace(<span class="string">'###'</span>,<span class="string">''</span>)</span><br><span class="line">		norArr = norArr + log + <span class="string">'\n'</span></span><br><span class="line">	<span class="keyword">elif</span> log.find(<span class="string">'***'</span>) != -<span class="number">1</span>:</span><br><span class="line">		log.replace(<span class="string">'***'</span>,<span class="string">''</span>)</span><br><span class="line">		bugArr = bugArr + log + <span class="string">'\n'</span></span><br><span class="line">outputMsg = <span class="string">''</span></span><br><span class="line"><span class="keyword">if</span> norArr != <span class="string">''</span>:</span><br><span class="line">	outputMsg = outputMsg + <span class="string">'新提交'</span> + <span class="string">'\n'</span> + norArr</span><br><span class="line"><span class="keyword">if</span> bugArr != <span class="string">''</span></span><br><span class="line">	outputMsg = outputMsg + <span class="string">'修复问题'</span> + <span class="string">'\n'</span> + bugArr</span><br><span class="line"></span><br><span class="line">content = outputMsg</span><br><span class="line"><span class="comment">#################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下是真正的发送代码，没有必要请勿改动</span></span><br><span class="line"><span class="comment">#导入smtplib和MIMEText  </span></span><br><span class="line"><span class="keyword">import</span> smtplib  </span><br><span class="line"><span class="keyword">from</span> email.Header <span class="keyword">import</span> Header  </span><br><span class="line"><span class="keyword">from</span> email.MIMEText <span class="keyword">import</span> MIMEText  </span><br><span class="line"><span class="keyword">from</span> email.MIMEMultipart <span class="keyword">import</span> MIMEMultipart  </span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一个带附件的实例</span></span><br><span class="line">msg = MIMEMultipart()  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#添加邮件内容  </span></span><br><span class="line"><span class="comment">#注意，要指定邮件内容的编码为utf-8，否则中文会有乱码  </span></span><br><span class="line">text_msg = MIMEText(content,<span class="string">'plain'</span>,<span class="string">'utf-8'</span>)  </span><br><span class="line">msg.attach(text_msg)  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#构造附件  </span></span><br><span class="line"><span class="comment">#注意：传入的参数attfile为unicode，否则带中文的目录或名称的文件读不出来  </span></span><br><span class="line"><span class="comment">#      basename 为文件名称，由于传入的参数attfile为unicode编码，此处的basename也为unicode编码  </span></span><br><span class="line">basename = os.path.basename(attfile)  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#注意：指定att的编码方式为gb2312  </span></span><br><span class="line">att = MIMEText(open(attfile, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'gb2312'</span>)  </span><br><span class="line">att[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span>  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#注意：此处basename要转换为gb2312编码，否则中文会有乱码。  </span></span><br><span class="line"><span class="comment">#      特别，此处的basename为unicode编码，所以可以用basename.encode('gb2312')  </span></span><br><span class="line"><span class="comment">#            如果basename为utf-8编码，要用basename.decode('utf-8').encode('gb2312')  </span></span><br><span class="line">att[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename=%s'</span> % basename.encode(<span class="string">'gb2312'</span>)  </span><br><span class="line">msg.attach(att)  </span><br><span class="line">   </span><br><span class="line"><span class="comment">#加邮件头  </span></span><br><span class="line"><span class="comment">#但是msg['to']并没有在后面被使用，这么写明显是不合理的，但是这就是stmplib的bug。你只有这样写才能群发邮件</span></span><br><span class="line">msg[<span class="string">'to'</span>] = <span class="string">","</span>.join(to_addrs)</span><br><span class="line">msg[<span class="string">'from'</span>] = from_addr</span><br><span class="line">msg[<span class="string">'Cc'</span>] = <span class="string">","</span>.join(acc)</span><br><span class="line"><span class="comment">#主题指定utf-8编码，否则中文会有乱码  </span></span><br><span class="line">msg[<span class="string">'subject'</span>] = Header(subject, <span class="string">'utf-8'</span>)  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#发送邮件  </span></span><br><span class="line">server = smtplib.SMTP(SMTP_SERVER)  </span><br><span class="line">server.login(SMTP_USERNAME, SMTP_PASSWORD)</span><br><span class="line">server.sendmail(msg[<span class="string">'from'</span>], to_addrs + acc,msg.as_string())  </span><br><span class="line">server.close</span><br></pre></td></tr></table></figure></p>
+<p>代码的逻辑这里不再赘述，这里我们需要做的就是更改自己的邮箱和要发送、抄送的人的邮箱，以及附件的存放地址，邮件的title 和 内容是从外面传入进来的。真正的fastlane中的调用方式如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">lane <span class="symbol">:mail</span> <span class="keyword">do</span></span><br><span class="line">	<span class="comment">#打包到fastlane/gym/下</span></span><br><span class="line">	gym(<span class="symbol">scheme:</span> <span class="string">"FindMyCar"</span>,<span class="symbol">output_directory:</span> <span class="string">"fastlane/gym/"</span>,) </span><br><span class="line">	<span class="comment">#拿到获取到的 log</span></span><br><span class="line">	commitLog = changelog_from_git_commits(</span><br><span class="line">		<span class="symbol">between:</span> [<span class="string">"31c19ab1c5dd01"</span>, <span class="string">"HEAD"</span>],  <span class="comment"># 指定获取log 的节点，不包括选中的节点</span></span><br><span class="line">		<span class="symbol">pretty:</span> <span class="string">"* (%ae) %s"</span>,<span class="comment"># </span></span><br><span class="line">		<span class="symbol">merge_commit_filtering:</span> <span class="string">"exclude_merges"</span></span><br><span class="line">	)</span><br><span class="line">	<span class="comment">#把拿到的log信息包装成字符串</span></span><br><span class="line">	commit = <span class="string">"'"</span> + commitLog + <span class="string">"'"</span></span><br><span class="line">	<span class="comment">#包装好的log当成邮件内容传递给发邮件的 python 脚本</span></span><br><span class="line">	sh(<span class="string">"python mailTestGroup.py '参数测试' <span class="subst">#&#123;commit&#125;</span>"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
 <p>完成后我们可以调用此条自定义的lane <code>fastlane mail</code> 实际的邮件效果如下：<br><img src="/img/Fastlane/QQ20170302-154949@2x.png" alt=""> </p>
+<h2 id="u9644_u52A0_pbxprojHelper_u2013Xcode_u5DE5_u7A0B_u6587_u4EF6_u52A9_u624B"><a href="#u9644_u52A0_pbxprojHelper_u2013Xcode_u5DE5_u7A0B_u6587_u4EF6_u52A9_u624B" class="headerlink" title="附加 pbxprojHelper–Xcode工程文件助手"></a>附加 pbxprojHelper–Xcode工程文件助手</h2><p>在开发公司的项目时，check out 代码到本地后需要修改工程文件。比如更改证书和 Bundle Identifier、删除一些编译不过的 Target，修改 Build Settings 等配置。重复手动修改这些非常耗费时间和没有意义。  </p>
+<h3 id="u9700_u6C42"><a href="#u9700_u6C42" class="headerlink" title="需求"></a>需求</h3><ol>
+<li>将程序员对工程文件做出的配置修改记录下来，并保存成 JSON 文件。</li>
+<li>下次使用时直接导入 JSON 文件，将配置修改应用到当前的工程文件上。</li>
+<li>支持回滚操作。</li>
+<li>工程文件内容的预览、过滤。</li>
+<li>提供命令行工具。</li>
+</ol>
+<h3 id="pbxprojHelper__u5DE5_u5177_u5B89_u88C5"><a href="#pbxprojHelper__u5DE5_u5177_u5B89_u88C5" class="headerlink" title="pbxprojHelper 工具安装"></a>pbxprojHelper 工具安装</h3><p><a href="https://github.com/yulingtianxia/pbxprojHelper" target="_blank" rel="external">pbxprojHelper Github</a>这里提供了源码和使用方法，我这里在啰嗦一下自己的安装过程以及注意事项。<br>由于工程采用 swift3 编写，这里你的mac OS 需要在 10.12以上。<br>操作如下：<br><img src="/img/Fastlane/QQ20170317-101133.png" alt=""><br>下载APP  和 命令行工具，如果不需要刻意不下载 命令行工具。<br><img src="/img/Fastlane/QQ20170317-101232.png" alt=""><br>完成以后将 <strong>pbxproj</strong> 移到 <code>/usr/local/bin/</code> 目录, 这样你就能方便地在终端中执行 <strong>pbxproj</strong> 命令了。这里需要注意的是需要给<strong>pbxproj</strong> 赋予一定的权限才可以正常执行。打开 terminal 输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/bin/</span><br><span class="line">chmod a+x pbxproj</span><br></pre></td></tr></table></figure></p>
+<p>执行完以后在 terminal 输入  pbxproj 命令，如果出现如下效果，就表示安装成功了。<br><img src="/img/Fastlane/QQ20170317-102559.png" alt="">   </p>
+<h3 id="pbxprojHelper__u5DE5_u5177_u4F7F_u7528"><a href="#pbxprojHelper__u5DE5_u5177_u4F7F_u7528" class="headerlink" title="pbxprojHelper 工具使用"></a>pbxprojHelper 工具使用</h3><p>把下载好的AP直接打开就可直接使用，这里我们第一步要去生成一个 记录差异化的的json配置文件。打开<code>window-&gt;Json Configuration Generator</code>：<br><img src="/img/Fastlane/QQ20170317-102926.png" alt=""><br>选择原始的工程文件和修改后的工程文件并且指定配置文件的输出路径，点击 Generator 就可以生成json配置文件。<br><img src="/img/Fastlane/QQ20170317-103255.png" alt=""><br><img src="/img/Fastlane/QQ20170317-103311.png" alt=""><br>完成以后，基础的配置就算完成了。一般我们的工作流程是：  </p>
+<ol>
+<li>更新代码。</li>
+<li>开发自己的模块。</li>
+<li>开发完成需要真机调试或者需要出包时，切换到自己的证书配置环境。选择需要切换环境的工程文件，选择机的JSON配置文件，点击apply即可切换。！！！这里建议不要关闭APP，需要全程保持，以免出现后面无法revert的情况。<br><img src="/img/Fastlane/QQ20170317-104111.png" alt=""> </li>
+<li>没有问题的话准备提交，首先 revert自己的工程配置，然后提交代码。<br><img src="/img/Fastlane/QQ20170317-104208.png" alt=""><br>基本上到这里app的用法就说完了，下面介绍一下命令行的使用：  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成json配置文件</span></span><br><span class="line">pbxproj <span class="keyword">my</span>.xcodeproj -compare modified_file -o jsonPath</span><br><span class="line"><span class="comment">#应用差异化文件配置文件</span></span><br><span class="line">pbxproj -apply <span class="keyword">my</span>.xcodeproj JsonConfiguration.json</span><br><span class="line"><span class="comment">#还原到以前的工程文件  </span></span><br><span class="line">pbxproj -revert <span class="keyword">my</span>.xcodeproj</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="u53C2_u8003_u94FE_u63A5"><a href="#u53C2_u8003_u94FE_u63A5" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://fastlane.tools/" target="_blank" rel="external">fastlane 官网</a><br><a href="https://docs.fastlane.tools/" target="_blank" rel="external">fastlane DOC</a><br><a href="https://github.com/yulingtianxia/pbxprojHelper" target="_blank" rel="external">pbxprojHelper–Xcode工程文件助手</a></p>
 </span>
       
     </div>
@@ -485,8 +413,8 @@ sh(<span class="string">"python mailTestGroup.py '参数测试' <span class="sub
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/02/Fastlane/"
-           data-title="Fastlane 的安装与使用" data-url="http://yoursite.com/2017/03/02/Fastlane/">
+      <div class="ds-thread" data-thread-key="2017/03/17/Fastlane/"
+           data-title="Fastlane 的安装与使用" data-url="http://yoursite.com/2017/03/17/Fastlane/">
       </div>
     
   </div>
@@ -594,7 +522,7 @@ sh(<span class="string">"python mailTestGroup.py '参数测试' <span class="sub
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac__u73AF_u5883_u4E0B_Ruby__u7684_u5B89_u88C5_u4E0E_u5347_u7EA7"><span class="nav-number">1.</span> <span class="nav-text">Mac 环境下 Ruby 的安装与升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RVM__28Ruby_Version_Manager_29"><span class="nav-number">1.1.</span> <span class="nav-text">RVM (Ruby Version Manager)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RVM_u5B89_u88C5"><span class="nav-number">1.1.1.</span> <span class="nav-text">RVM安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E4B_u540E_u5C31_u662F_u7B49_u5F85_u4E00_u6BB5_u65F6_u95F4_u4E4B_u540E_uFF0C_u5C31_u53EF_u4EE5_u5B89_u88C5_u6210_u529F_u4E86_uFF0C_u4F7F_u7528_u4EE5_u4E0B_u547D_u4EE4_u6765_u9A8C_u8BC1"><span class="nav-number">1.1.2.</span> <span class="nav-text">之后就是等待一段时间之后，就可以安装成功了，使用以下命令来验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u9A8C_u8BC1_u7248_u672C_u53F7"><span class="nav-number">1.1.3.</span> <span class="nav-text">验证版本号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528RVM_u5347_u7EA7Ruby"><span class="nav-number">1.2.</span> <span class="nav-text">使用RVM升级Ruby</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5_Fastlane"><span class="nav-number">2.</span> <span class="nav-text">安装 Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane__u4F7F_u7528_u6B65_u9AA4"><span class="nav-number">3.</span> <span class="nav-text">Fastlane 使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u8FDB_u5165_u5230_u5F53_u524D_u7684_u5DE5_u7A0B_u76EE_u5F55_uFF0Cproject_u6587_u4EF6_u6240_u5728_u76EE_u5F55"><span class="nav-number">3.1.</span> <span class="nav-text">进入到当前的工程目录，project文件所在目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_gym__u81EA_u52A8_u6253_u5305"><span class="nav-number">3.2.</span> <span class="nav-text">使用 gym 自动打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_snapshot__u622A_u53D6_u56FE_u7247"><span class="nav-number">3.3.</span> <span class="nav-text">使用 snapshot 截取图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u628A_u751F_u6210_u7684-/SnapshotHelper-swift_u6587_u4EF6_u62D6_u52A8_u5230_u8BE5_target__u5E95_u4E0B_uFF1A"><span class="nav-number">3.3.1.</span> <span class="nav-text">把生成的./SnapshotHelper.swift文件拖动到该 target 底下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u521D_u59CB_u5316_u6D4B_u8BD5_u4EE3_u7801"><span class="nav-number">3.3.2.</span> <span class="nav-text">初始化测试代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5F55_u5236_u6D4B_u8BD5_u6D41_u7A0B"><span class="nav-number">3.3.3.</span> <span class="nav-text">录制测试流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u63D2_u5165_u622A_u56FE_u7684_u57CB_u70B9"><span class="nav-number">3.3.4.</span> <span class="nav-text">插入截图的埋点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u83B7_u53D6_git_commit__u7684_log__u4FE1_u606F"><span class="nav-number">3.4.</span> <span class="nav-text">获取 git commit 的 log 信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u53D1_u9001_u90AE_u4EF6"><span class="nav-number">3.5.</span> <span class="nav-text">发送邮件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac__u73AF_u5883_u4E0B_Ruby__u7684_u5B89_u88C5_u4E0E_u5347_u7EA7"><span class="nav-number">1.</span> <span class="nav-text">Mac 环境下 Ruby 的安装与升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RVM__28Ruby_Version_Manager_29"><span class="nav-number">1.1.</span> <span class="nav-text">RVM (Ruby Version Manager)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RVM_u5B89_u88C5"><span class="nav-number">1.1.1.</span> <span class="nav-text">RVM安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E4B_u540E_u5C31_u662F_u7B49_u5F85_u4E00_u6BB5_u65F6_u95F4_u4E4B_u540E_uFF0C_u5C31_u53EF_u4EE5_u5B89_u88C5_u6210_u529F_u4E86_uFF0C_u4F7F_u7528_u4EE5_u4E0B_u547D_u4EE4_u6765_u9A8C_u8BC1"><span class="nav-number">1.1.2.</span> <span class="nav-text">之后就是等待一段时间之后，就可以安装成功了，使用以下命令来验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u9A8C_u8BC1_u7248_u672C_u53F7"><span class="nav-number">1.1.3.</span> <span class="nav-text">验证版本号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528RVM_u5347_u7EA7Ruby"><span class="nav-number">1.2.</span> <span class="nav-text">使用RVM升级Ruby</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5_Fastlane"><span class="nav-number">2.</span> <span class="nav-text">安装 Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane__u4F7F_u7528_u6B65_u9AA4"><span class="nav-number">3.</span> <span class="nav-text">Fastlane 使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u8FDB_u5165_u5230_u5F53_u524D_u7684_u5DE5_u7A0B_u76EE_u5F55_uFF0Cproject_u6587_u4EF6_u6240_u5728_u76EE_u5F55"><span class="nav-number">3.1.</span> <span class="nav-text">进入到当前的工程目录，project文件所在目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_gym__u81EA_u52A8_u6253_u5305"><span class="nav-number">3.2.</span> <span class="nav-text">使用 gym 自动打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_snapshot__u622A_u53D6_u56FE_u7247"><span class="nav-number">3.3.</span> <span class="nav-text">使用 snapshot 截取图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u628A_u751F_u6210_u7684-/SnapshotHelper-swift_u6587_u4EF6_u62D6_u52A8_u5230_u8BE5_target__u5E95_u4E0B_uFF1A"><span class="nav-number">3.3.1.</span> <span class="nav-text">把生成的./SnapshotHelper.swift文件拖动到该 target 底下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u521D_u59CB_u5316_u6D4B_u8BD5_u4EE3_u7801"><span class="nav-number">3.3.2.</span> <span class="nav-text">初始化测试代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5F55_u5236_u6D4B_u8BD5_u6D41_u7A0B"><span class="nav-number">3.3.3.</span> <span class="nav-text">录制测试流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u63D2_u5165_u622A_u56FE_u7684_u57CB_u70B9"><span class="nav-number">3.3.4.</span> <span class="nav-text">插入截图的埋点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u83B7_u53D6_git_commit__u7684_log__u4FE1_u606F"><span class="nav-number">3.4.</span> <span class="nav-text">获取 git commit 的 log 信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u53D1_u9001_u90AE_u4EF6"><span class="nav-number">3.5.</span> <span class="nav-text">发送邮件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9644_u52A0_pbxprojHelper_u2013Xcode_u5DE5_u7A0B_u6587_u4EF6_u52A9_u624B"><span class="nav-number">4.</span> <span class="nav-text">附加 pbxprojHelper–Xcode工程文件助手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u9700_u6C42"><span class="nav-number">4.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pbxprojHelper__u5DE5_u5177_u5B89_u88C5"><span class="nav-number">4.2.</span> <span class="nav-text">pbxprojHelper 工具安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pbxprojHelper__u5DE5_u5177_u4F7F_u7528"><span class="nav-number">4.3.</span> <span class="nav-text">pbxprojHelper 工具使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53C2_u8003_u94FE_u63A5"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
