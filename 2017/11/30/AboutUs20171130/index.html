@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Nodejs," />
+  <meta name="keywords" content="About Me," />
 
 
 
@@ -51,17 +51,16 @@
 
 
 
-<meta name="description" content="下载一个CodeRuner,运行如下代码">
+<meta name="description" content="每当被问起，你这么做能改变什么的时候，我便想起哈维尔的话：“我们做一件事，并不是因为这么做会产生结果，而是坚信，这么做是对的”。–电影《出租车司机》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用Nodejs几行代码打造的简易服务器">
-<meta property="og:url" content="http://yoursite.com/2016/07/18/HomeMadeTomcat/index.html">
+<meta property="og:title" content="Everybody knows">
+<meta property="og:url" content="http://yoursite.com/2017/11/30/AboutUs20171130/index.html">
 <meta property="og:site_name" content="当下的力量">
-<meta property="og:description" content="下载一个CodeRuner,运行如下代码">
-<meta property="og:image" content="http://yoursite.com/img/QQ20160718-0@2x.png">
-<meta property="og:updated_time" content="2016-07-18T10:38:08.000Z">
+<meta property="og:description" content="每当被问起，你这么做能改变什么的时候，我便想起哈维尔的话：“我们做一件事，并不是因为这么做会产生结果，而是坚信，这么做是对的”。–电影《出租车司机》">
+<meta property="og:updated_time" content="2017-11-30T08:51:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用Nodejs几行代码打造的简易服务器">
-<meta name="twitter:description" content="下载一个CodeRuner,运行如下代码">
+<meta name="twitter:title" content="Everybody knows">
+<meta name="twitter:description" content="每当被问起，你这么做能改变什么的时候，我便想起哈维尔的话：“我们做一件事，并不是因为这么做会产生结果，而是坚信，这么做是对的”。–电影《出租车司机》">
 
 
 
@@ -73,7 +72,7 @@
   };
 </script>
 
-  <title> 利用Nodejs几行代码打造的简易服务器 | 当下的力量 </title>
+  <title> Everybody knows | 当下的力量 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -213,7 +212,7 @@
             
             
               
-                利用Nodejs几行代码打造的简易服务器
+                Everybody knows
               
             
           </h1>
@@ -222,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-07-18T18:38:08+08:00" content="2016-07-18">
-              2016-07-18
+            <time itemprop="dateCreated" datetime="2017-11-30T16:51:58+08:00" content="2017-11-30">
+              2017-11-30
             </time>
           </span>
 
@@ -232,8 +231,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
+                  <a href="/categories/About-Me/" itemprop="url" rel="index">
+                    <span itemprop="name">About Me</span>
                   </a>
                 </span>
 
@@ -245,13 +244,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/18/HomeMadeTomcat/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/18/HomeMadeTomcat/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -269,12 +261,13 @@
 
       
         <span itemprop="articleBody"><blockquote>
-<p>下载一个CodeRuner,运行如下代码</p>
+<p>每当被问起，你这么做能改变什么的时候，我便想起哈维尔的话：“我们做一件事，并不是因为这么做会产生结果，而是坚信，这么做是对的”。–电影《出租车司机》</p>
 </blockquote>
 <hr>
-<a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"request: "</span> + request.method);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"header: "</span> + <span class="built_in">JSON</span>.stringify(request.headers));</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"url: "</span> + getClientIp(request));</span><br><span class="line">	response.write(<span class="built_in">JSON</span>.stringify(a));</span><br><span class="line">	response.end();</span><br><span class="line">&#125;</span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started."</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getClientIp</span>(<span class="params">req</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> req.headers[<span class="string">'x-forwarded-for'</span>] ||</span><br><span class="line">	req.connection.remoteAddress ||</span><br><span class="line">	req.socket.remoteAddress ||</span><br><span class="line">	req.connection.socket.remoteAddress;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">	provinceCode:<span class="string">"280"</span>,</span><br><span class="line">	cityCode:<span class="string">"0282"</span>,</span><br><span class="line">	iconImgType:<span class="string">"200"</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>如下截图：<br><img src="/img/QQ20160718-0@2x.png" alt=""></p>
+<a id="more"></a>  
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=518015108&auto=1&height=66"></iframe>  
+
+<p>2017年毫无疑问是魔幻现实主义的又一个重要的里程碑，沉默的大多数继续在所谓的“和谐盛世“里娱乐至死，早些年被给予厚望的舆论高地一个个变得“和谐”，不同的声音也已经消失殆尽，新闻联播里面国外依旧战火连天，国内依旧歌舞升平。但在结束了一天的劳累挤在下班的路上，在追的黄金档电视剧结束，或者入睡前的某一刻，当世界突然安静下来，似乎所有人慢慢开始变得躁动与不安，所谓的“希望“只是个笑话，所谓的“和谐”也只是个幌子，<strong>Everybody knows</strong>…<br>未完待续。。。</p>
 </span>
       
     </div>
@@ -283,7 +276,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Nodejs/" rel="tag">#Nodejs</a>
+            <a href="/tags/About-Me/" rel="tag">#About Me</a>
           
         </div>
       
@@ -292,17 +285,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/18/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/11/30/HomeMadeTomcat/" rel="next" title="利用Nodejs几行代码打造的简易服务器">
+                <i class="fa fa-chevron-left"></i> 利用Nodejs几行代码打造的简易服务器
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/25/gitTest/" rel="prev" title="Git 操作练习">
-                Git 操作练习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -329,9 +318,39 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/18/HomeMadeTomcat/"
-           data-title="利用Nodejs几行代码打造的简易服务器" data-url="http://yoursite.com/2016/07/18/HomeMadeTomcat/">
-      </div>
+      <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+      <div id="container" style="display:none"></div>
+      <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+      <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+      <script>
+      const myTheme = {
+        render(state, instance) {
+          const container = document.createElement('div');
+          container.lang = "en-US";
+          container.className = 'gitment-container gitment-root-container';
+          container.appendChild(instance.renderHeader(state, instance));
+          container.appendChild(instance.renderEditor(state, instance));
+          container.appendChild(instance.renderComments(state, instance));
+          container.appendChild(instance.renderFooter(state, instance));
+          return container;
+        }
+      }
+      function showGitment() {
+        $("#gitment_title").attr("style", "display:none");
+        $("#container").attr("style", "").addClass("gitment_container");
+        var gitment = new Gitment({
+          id: window.location.pathname,
+          theme: myTheme,
+          owner: '565510958@qq.com',
+          repo: 'git@github.com:tx5655/tx5655.github.io.git',
+          oauth: {
+            client_id: '0b1f75aa11c7cbacf966',
+            client_secret: '72579e0da2f699c132ba61c3223bbd7c461abcf7'
+          }
+        });
+        gitment.render('container');
+      }
+      </script>
     
   </div>
 
@@ -374,7 +393,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -492,28 +511,11 @@
 
   
     
+    
 
   
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"tx5655"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
 
 
-    
   
 
   
