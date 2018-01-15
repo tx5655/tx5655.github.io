@@ -1,0 +1,867 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="静态库Framework 的制作目的诚然制作 Framework 并非什么技术难题，但其中的一些概念也可以加深我们对 编译、 iOS 或者 Mac 相关的了解，也随着 Xcode 的不断升级，制作Framework 也有不少不大不小的坑，在这里也统一收集记录下来。
+简介Mac OS X扩展了framework的功能，让我们能够利用它来共享代码和资源。通过framework我们可以共享所有形式的资源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="静态库Framework 的制作">
+<meta property="og:url" content="http://yoursite.com/2018/01/15/Framework/index.html">
+<meta property="og:site_name" content="当下的力量">
+<meta property="og:description" content="静态库Framework 的制作目的诚然制作 Framework 并非什么技术难题，但其中的一些概念也可以加深我们对 编译、 iOS 或者 Mac 相关的了解，也随着 Xcode 的不断升级，制作Framework 也有不少不大不小的坑，在这里也统一收集记录下来。
+简介Mac OS X扩展了framework的功能，让我们能够利用它来共享代码和资源。通过framework我们可以共享所有形式的资源">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-102550.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-111316.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-104351.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-185728.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-102001.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-161326.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-163607.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-175134.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-175459.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/Snipaste_2018-01-05_16-57-27.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-181057.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-181613.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-183103.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-183309.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-183422.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-175805.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-183711.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-183805.png">
+<meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-184002.png">
+<meta property="og:updated_time" content="2018-01-15T07:14:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="静态库Framework 的制作">
+<meta name="twitter:description" content="静态库Framework 的制作目的诚然制作 Framework 并非什么技术难题，但其中的一些概念也可以加深我们对 编译、 iOS 或者 Mac 相关的了解，也随着 Xcode 的不断升级，制作Framework 也有不少不大不小的坑，在这里也统一收集记录下来。
+简介Mac OS X扩展了framework的功能，让我们能够利用它来共享代码和资源。通过framework我们可以共享所有形式的资源">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 静态库Framework 的制作 | 当下的力量 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">当下的力量</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Winter is comming！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                静态库Framework 的制作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2018-01-15T15:14:44+08:00" content="2018-01-15">
+              2018-01-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="u9759_u6001_u5E93Framework__u7684_u5236_u4F5C"><a href="#u9759_u6001_u5E93Framework__u7684_u5236_u4F5C" class="headerlink" title="静态库Framework 的制作"></a>静态库Framework 的制作</h1><h2 id="u76EE_u7684"><a href="#u76EE_u7684" class="headerlink" title="目的"></a>目的</h2><p>诚然制作 Framework 并非什么<code>技术难题</code>，但其中的一些概念也可以加深我们对 编译、 iOS 或者 Mac 相关的了解，也随着 Xcode 的不断升级，制作Framework 也有不少不大不小的坑，在这里也统一<code>收集记录</code>下来。</p>
+<h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><p>Mac OS X扩展了framework的功能，让我们能够利用它来共享代码和资源。通过framework我们可以共享所有形式的资源，如动态共享库，nib文件，图像字符资源以及文档等。<br>系统会在需要的时候将framework载入内存中，多个应用程序可以同时使用同一个framework。这种方法可以使得你的代码易分享，在多个工程中复用，并且可以隐藏实现细节，控制公开的头文件。    </p>
+<a id="more"></a>
+<h2 id="u76F8_u5173_u6982_u5FF5"><a href="#u76F8_u5173_u6982_u5FF5" class="headerlink" title="相关概念"></a>相关概念</h2><h3 id="u52A8_u6001_u5E93_VS__u9759_u6001_u5E93"><a href="#u52A8_u6001_u5E93_VS__u9759_u6001_u5E93" class="headerlink" title="动态库 VS 静态库"></a>动态库 VS 静态库</h3><blockquote>
+<p>Static frameworks are linked at compile time. Dynamic frameworks are linked at runtime    </p>
+</blockquote>
+<p>首先你得搞清楚，这两个东西都是<code>编译好的二进制文件</code>。就是<strong>用法</strong>不同而已。为什么要分为动态和静态两种库呢？先看下图：<br><img src="/img/Framework/QQ20171211-102550.png" alt=""><br>我们可以很清楚的看到:  </p>
+<ul>
+<li>对于一个静态库而言，其实已经是编译好的了,类似一个 <strong>.o</strong> 的集合（这里并没有连接过程）。在 build 的过程中只会参与链接的过程，而这个链接的过程简单的讲就是<strong>合并</strong>，并且链接器只会将静态库中被<strong>使用的部分</strong>合并到可执行文件中去。相比较于动态库，静态库的处理起来要简单的多，具体如下图：  </li>
+</ul>
+<p><img src="/img/Framework/QQ20171211-111316.png" alt="">  </p>
+<ul>
+<li>链接器会将所有<strong>.o</strong>用到的 <strong>global symbol</strong> 和 <strong>unresolved symbol</strong> 放入一个临时表，而且是 <strong>global symbol</strong> 是不能重复的。</li>
+<li>对于静态库的 <strong>.o</strong> , 连接器会将没有任何 <strong>symbol</strong> 在 <strong>unresolved symbol table</strong> 的给忽略。</li>
+<li><strong>unresolved symbol</strong> 类似 <code>extern int test();</code> — <strong>.h </strong>的 声明?</li>
+<li><strong>global symbol</strong> 类似 <code>void test() { print(&quot;test&quot;)}</code> – <strong>.m</strong> 的 实现?</li>
+<li>最后，链接器会用函数的实际地址来代替函数引用。  </li>
+</ul>
+<h3 id="u52A8_u6001_u5E93_u7684_u5904_u7406_u65B9_u5F0F"><a href="#u52A8_u6001_u5E93_u7684_u5904_u7406_u65B9_u5F0F" class="headerlink" title="动态库的处理方式"></a>动态库的处理方式</h3><ul>
+<li>首先，对于动态库而言其实分 <strong>动态链接库</strong> 和 <strong>动态加载库</strong> 两种的，这两个最本质的区别还是加载时间。<ul>
+<li><strong>动态链接库</strong>：在没有被加载到内存的前提下，当可执行文件被加载，动态库也随着被加载到内存中。在 Linked Framework and Libraries 设置的一些 share libraries。【随着程序启动而启动】</li>
+<li><strong>动态加载库</strong>：当需要的时候再使用 dlopen 等通过代码或者命令的方式来加载。【在程序启动之后】</li>
+</ul>
+</li>
+<li>但是不论是哪种动态库，相比较与静态库，动态库处理起来要棘手的多。由于动态库是动态的，所以<strong>你事先不知道某个函数的具体地址</strong>。因此动态链接器在<strong>链接函数</strong>的时候需要做大量的工作。</li>
+</ul>
+<p>因为动态库在链接函数需要做大量的工作，而静态库已经实现处理好了。所以单纯的在所有都没有加载的情况下，静态库的加载速度会更快一点。虽然动态库更加耗时，但是对于在加载过的share libraries不需要再加载的这个前提下，使用动态库可以节省一些启动时间。</p>
+<ul>
+<li>而实现这个<strong>动态链接</strong>是使用了 <strong>Procedure Linkage Table (PLT)</strong>。首先这个 <strong>PLT</strong> 列出了程序中每一个函数的调用，当程序开始运行，如果动态库被加载到内存中，<strong>PLT</strong> 会去寻找动态的地址并记录下来，如果每个函数都被调用过的话，下一次调用就可以通过 <strong>PLT</strong> 直接跳转了，但是和静态库还是有点区别的是，每一个函数的调用还是需要通过一张 <strong>PLT</strong>。所有静态链接做的事情都搬到运行时来做了，会导致<strong>更慢</strong> 的原因。</li>
+</ul>
+<h3 id="u52A8_u6001_u5E93_u5230_u5E95_u5728_u5185_u5B58_u54EA_u5757_u533A_u57DF_u7684_u95EE_u9898"><a href="#u52A8_u6001_u5E93_u5230_u5E95_u5728_u5185_u5B58_u54EA_u5757_u533A_u57DF_u7684_u95EE_u9898" class="headerlink" title="动态库到底在内存哪块区域的问题"></a>动态库到底在内存哪块区域的问题</h3><ul>
+<li>首先，不管是静态库、动态库，两者的区别和在内存哪个区域没有关系，最本质的区别是，一个的函数调用等在编译时候就已经确定，而动态库是动态加载的。换句话说，静态库修改了东西，整个程序需要重新编译，而对于动态库的修改而言，只需要重启 <strong>app</strong>（重置 <strong>PLT</strong> ）。</li>
+<li>至于在内存的哪个区域，和 <strong>静态库</strong> or <strong>动态库</strong> 没有关系。代码段、数据段这些，都是程序加载时就进入的。堆一般是文件buffer分配、对象初始化等时候用的。栈是函数出入口指针，局部常规变量用的。只要 malloc 都在堆里。具体的可以参照<a href="https://github.com/Damonvvong/iOSDevNotes/blob/master/Notes/framework2.md#memory" target="_blank" rel="external">这里</a></li>
+<li>还需要提一下的是，如果是动态加载库，那么在没有加载的时候，代码段、数据段这些也是不会加载进去的。lazy load。   </li>
+</ul>
+<p>官方解释如下： </p>
+<blockquote>
+<p>A better approach is for an app to load code into its address space when it’s actually needed, either at launch time or at runtime. The type of library that provides this flexibility is called dynamic library.  </p>
+</blockquote>
+<ul>
+<li><strong>动态库</strong>:可以在 <strong>运行 or 启动</strong> 的时候加载到内存中，加载到一块<strong>独立于 app </strong> 的内存地址中</li>
+</ul>
+<blockquote>
+<ul>
+<li>When an app is launched, the app’s code—which includes the code of the static libraries it was linked with—is loaded into the app’s address space.Applications with large executables suffer from slow launch times and large memory footprints  </li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>静态库</strong>：当程序在启动的时候，会将 app 的代码(包括静态库的代码）一起在加载到 app 所处的内存地址上。相比于<strong>动态库</strong> 的方案，使用<strong>静态库</strong>将花费更多的启动时间和内存消耗。还会增加可执行文件的大小。  </li>
+</ul>
+<p>而很多 app 都会使用很多相同的库，如 <strong>UIKit </strong>、 <strong>CFNetwork</strong> 等。所以，苹果为了加快 app 启动速度、减少内存花销、减少安装包体积大小，采用了大量 动态库的形式 来优化系统。<strong>dyld 的共享缓存</strong> ：在 OS X 和 iOS 上的动态链接器使用了共享缓存，共享缓存存于 /var/db/dyld/。对于每一种架构，操作系统都有一个单独的文件，文件中包含了绝大多数的动态库，这些库都已经链接为一个文件，并且已经处理好了它们之间的符号关系。当加载一个 Mach-O 文件 (一个可执行文件或者一个库) 时，动态链接器首先会检查 共享缓存 看看是否存在其中，如果存在，那么就直接从共享缓存中拿出来使用。每一个进程都把这个共享缓存映射到了自己的地址空间中。这个方法大大优化了 OS X 和 iOS 上程序的启动时间。</p>
+<blockquote>
+<p>两者都是由*.o目标文件链接而成。都是二进制文件，闭源。  </p>
+</blockquote>
+<h3 id="framework_VS_-a"><a href="#framework_VS_-a" class="headerlink" title=".framework VS .a"></a>.framework VS .a</h3><ul>
+<li><p>.a，不能直接拿来使用，需要配合头文件、资源文件一起使用。在 iOS 中是作为静态库的文件名后缀。</p>
+</li>
+<li><p>.framework中除了有二进制文件之外还有资源文件，可以拿来直接使用。</p>
+</li>
+</ul>
+<h3 id="tbd_VS_-dylib"><a href="#tbd_VS_-dylib" class="headerlink" title=".tbd VS .dylib"></a>.tbd VS .dylib</h3><ul>
+<li><p>对于静态库的后缀名是<strong>.a</strong>，那么动态库的后缀名是什么呢？</p>
+</li>
+<li><p>可以从 libsqlite3.dylib 这里我们可以知道 .dylib 就是动态库的文件的后缀名。</p>
+</li>
+<li><p>那么 <strong>.tbd</strong> 又是什么东西呢？其实，细心的朋友都早已发现了从 Xcode7 我们再导入系统提供的动态库的时候，不再有<strong>.dylib</strong>了，取而代之的是<strong>.tbd</strong>。而 <strong>.tbd</strong> 其实是一个YAML本文文件，描述了需要链接的动态库的信息。主要目的是为了减少app 的下载大小。<a href="https://link.jianshu.com?t=http://stackoverflow.com/questions/31450690/why-xcode-7-shows-tbd-instead-of-dylib" target="_blank" rel="external">具体细节可以看这里</a></p>
+</li>
+</ul>
+<h3 id="Embedded_VS-_Linked"><a href="#Embedded_VS-_Linked" class="headerlink" title="Embedded VS. Linked"></a>Embedded VS. Linked</h3><blockquote>
+<p>Embedded frameworks are placed within an app’s sandbox and are only available to that app. System frameworks are stored at the system-level and are available to all apps.</p>
+</blockquote>
+<ul>
+<li><p>OK，前面说了那么多，那么如果我们自己开发了一个动态framework 怎么把它复制到 <strong>dyld 的共享缓存</strong> 里面呢？</p>
+</li>
+<li><p>一般来说，用正常的方式是不能滴，苹果也不允许你这么做。（当然不排除一些搞逆向的大神通过一些 hack 手段达到目的）</p>
+</li>
+<li><p>那么，我们应该如何开发并使用我们自己开发的 动态framework 呢？</p>
+</li>
+<li><p>那就是 Embedded Binaries。</p>
+</li>
+<li><p>Embedded 的意思是嵌入，但是这个嵌入并不是嵌入 app 可执行文件，而是嵌入 app 的 bundle 文件。当一个 app 通过 Embedded 的方式嵌入一个 app 后，在打包之后解压 ipa 可以在包内看到一个 framework 的文件夹，下面都是与这个应用相关的动态framework。在 Xcode 可以在这里设置,图中红色部分：  </p>
+</li>
+</ul>
+<p><img src="/img/Framework/QQ20171211-104351.png" alt="">  </p>
+<ul>
+<li><p>那么问题又来了，下面的 <strong>linded feameworks and libraries</strong> 又是什么呢？</p>
+</li>
+<li><p>首先在 <strong>linded feameworks and libraries</strong> 这个下面我们可以连接系统的动态库、自己开发的静态库、自己开发的动态库。对于这里的静态库而言，会在<strong>编译链接</strong>阶段连接到<strong>app可执行文件</strong>中，而对这里的动态库而言，虽然不会链接到<strong>app可执行文件</strong>中，<del>但是会在启动的时候就去加载这里设置的所有动态库</del>。(ps.理论上应该是这样，但是在我实际测试中似乎加载不加载都和这个没关系。可能我的姿势不对。😂)</p>
+</li>
+<li><p>如果你不想在启动的时候加载动态库，可以在 <strong>linded feameworks and libraries</strong>  删除，并使用dlopen加载动态库。（dlopen 不是私有 api。）</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)dlopenLoad&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *documentsPath = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@/Documents/Dylib.framework/Dylib"</span>,<span class="built_in">NSHomeDirectory</span>()];</span><br><span class="line">    [<span class="keyword">self</span> dlopenLoadDylibWithPath:documentsPath];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)dlopenLoadDylibWithPath:(<span class="built_in">NSString</span> *)path</span><br><span class="line">&#123;</span><br><span class="line">    libHandle = <span class="literal">NULL</span>;</span><br><span class="line">    libHandle = dlopen([path cStringUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>], RTLD_NOW);</span><br><span class="line">    <span class="keyword">if</span> (libHandle == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> *error = dlerror();</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"dlopen error: %s"</span>, error);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"dlopen load framework success."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这一点代码调用 也是iOS动态下发代码的基础，会导致无法上架App Store，但是<strong>in house</strong> 和<strong>develop</strong> 模式是完全OK的。具体细节这里不再深究。</p>
+<h3 id="u4F7F_u7528_u603B_u7ED3"><a href="#u4F7F_u7528_u603B_u7ED3" class="headerlink" title="使用总结"></a>使用总结</h3><p>静态库 ：.a 和 .framework<br>动态库： .dylib 和 .tbd 和 .framework。  </p>
+<ul>
+<li>注意！！ 上线App Store的话是不允许自制动态库的。  </li>
+<li>由于 .a 的使用需要额外依赖头文件以及资源文件，所以并没有 framework 来的方便，在这里不在讨论制作过程，我们以 静态库 framework 的制作为例：</li>
+</ul>
+<h2 id="u9759_u6001_u5E93_Framework_u5236_u4F5C_u6B65_u9AA4"><a href="#u9759_u6001_u5E93_Framework_u5236_u4F5C_u6B65_u9AA4" class="headerlink" title="静态库 Framework制作步骤"></a>静态库 Framework制作步骤</h2><p>bug: 发现 Xcode 9 以上打出的 Framework 在低版本的 Xcode 工程引入后会出现<a href="http://www.jianshu.com/p/bc141da8b35f" target="_blank" rel="external">错误如下</a>：<br> <img src="/img/Framework/QQ20171211-185728.png" alt="">    </p>
+<p>暂无解决方案，如果出现问题请换回 Xcode 8 去打包。实测Xcode 9.1 依然出现此问题，苹果真是越来越不走心了ㄟ( ▔, ▔ )ㄏ</p>
+<h3 id="u521B_u5EFA_u5DE5_u7A0B"><a href="#u521B_u5EFA_u5DE5_u7A0B" class="headerlink" title="创建工程"></a>创建工程</h3><p>打开Xcode(当前版本Xcode 9.1)，创建新工程：<br><img src="/img/Framework/QQ20171211-102001.png" alt=""><br><img src="/img/Framework/QQ20171211-161326.png" alt="">    </p>
+<p>前缀！！前缀！！前缀！！<br>这里需要特别注意的地方是<strong>一定一定要注意写上前缀</strong>，相信大家都遇到过在引入SDK后出现类重复定义的错误，由于oc并没有命名区间的概念，所以在我们自己创建SDK的时候需要时刻注意着这个问题。  </p>
+<h3 id="u5DE5_u7A0B_u8BBE_u7F6E"><a href="#u5DE5_u7A0B_u8BBE_u7F6E" class="headerlink" title="工程设置"></a>工程设置</h3><p><img src="/img/Framework/QQ20171211-163607.png" alt="">    </p>
+<ul>
+<li><a href="https://garbageout.wordpress.com/2015/03/24/dead-code-stripping/" target="_blank" rel="external">Dead Code Stripping</a> 是对程序编译出的可执行二进制文件中没有被实际使用的代码进行Strip操作。如果代码量巨大可以打开这个选项，有助于提升加载速度，但是效果一般，但是如果打开了这个选项代码中就需要避免使用全局变量和静态初始化。所以一般是不启用。  </li>
+<li><code>link with standard libraries</code>  如果激活此设置，那么编译器在链接过程中会自动使用通过标准库的链接器。为什么不启用？？？</li>
+<li>Mach-o Type 选择 静态库 <strong>Static Library </strong> ,这里是区分静态库和动态库的主要设置。    </li>
+</ul>
+<p><del>在Architectures下增加armv7s，并选中。</del> 将Build Active Architecture Only 设置为NO。 </p>
+<p><img src="/img/Framework/QQ20171211-175134.png" alt="">    </p>
+<ul>
+<li>Build Active Architecture Only 设置为NO的时候，会编译支持的所有的版;YES的时候，是为Debug的时候速度更快，它只编译当前的architecture 版本。 </li>
+</ul>
+<h3 id="u7F16_u5199_u4EE3_u7801"><a href="#u7F16_u5199_u4EE3_u7801" class="headerlink" title="编写代码"></a>编写代码</h3><p>这里我创建一个示例类 <code>LY_SayHi</code> ,<strong>所有的类一定要写前缀</strong>，<br><img src="/img/Framework/QQ20171211-175459.png" alt="">    </p>
+<h4 id="bundle__u8D44_u6E90_u6587_u4EF6"><a href="#bundle__u8D44_u6E90_u6587_u4EF6" class="headerlink" title=".bundle  资源文件"></a>.bundle  资源文件</h4><p>资源文件都打包放在这里。在制作Framework的时候不可以把图片直接放在项目中，否则制作好之后图片是一张一张的出现在项目中非常乱，需要新建一个bundle将图片放进去，这里的bundle提供整个SDK的图片资源。</p>
+<p><strong>注意：</strong>图片放进bundle之后不可以用<code>[UIImage ImageWithName:]</code>读取图片。要先找到bundle包再拿图片。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从自己模块的bundle里取出资源，并非mainBundle</span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIImage</span> *)getImageFromBundleWithName:(<span class="built_in">NSString</span> *)name &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSBundle</span> *bundle = [<span class="built_in">NSBundle</span>  bundleForClass:[<span class="keyword">self</span>  class]];</span><br><span class="line"><span class="comment">//填写自己的 bundle 名称，主要前缀问题。</span></span><br><span class="line">  <span class="built_in">NSURL</span> *bundleURL = [bundle URLForResource:<span class="string">@"LY_bundleName"</span>  withExtension:<span class="string">@"bundle"</span>];</span><br><span class="line"></span><br><span class="line"> <span class="built_in">NSBundle</span> *resourceBundle = [<span class="built_in">NSBundle</span> bundleWithURL: bundleURL];</span><br><span class="line"></span><br><span class="line"> <span class="built_in">NSString</span> *bundlePath = [resourceBundle resourcePath];</span><br><span class="line"></span><br><span class="line"> <span class="built_in">NSString</span> *path = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@/%@"</span>,bundlePath,name];</span><br><span class="line"></span><br><span class="line">  <span class="built_in">UIImage</span> *img = [<span class="built_in">UIImage</span>  imageWithContentsOfFile:path];</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> img;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="u652F_u6301bitcode"><a href="#u652F_u6301bitcode" class="headerlink" title="支持bitcode"></a>支持bitcode</h4><p>如果自己想要制作支持 Bitcode 的 Framework，仅仅在工程中开启 <code>Enable Bitcode</code> 是不够的，还需要这两步：</p>
+<ol>
+<li><p><code>Build Setting</code> 中 <code>Other Linker Flags</code> 中加入 <code>-fembed-bitcode</code>。</p>
+</li>
+<li><p><code>Build Setting</code> 中 <code>Other C Flags</code> 中加入 <code>-fembed-bitcode</code>。</p>
+</li>
+</ol>
+<p>检查静态库是否支持 bitcode,最好的方式就是手动集成到一个demo中，打开demo的bitcode设置，然后直接<strong>Archive</strong>，如果不出错就说明是支持的，如果出现下面的错误就说明静态库是有问题的。  </p>
+<p><img src="/img/Framework/Snipaste_2018-01-05_16-57-27.png" alt="">   </p>
+<h4 id="u6E90_u7801_u4E2D_u9700_u8981_u5F15_u5165_category"><a href="#u6E90_u7801_u4E2D_u9700_u8981_u5F15_u5165_category" class="headerlink" title="源码中需要引入 category"></a>源码中需要引入 category</h4><p>如果代码中引入了 category ，需要保证:  </p>
+<p><strong>重要！！！！！</strong></p>
+<ul>
+<li>分类命名一定要有自己的前缀<code>NSDictionary+LY_Category.h</code></li>
+<li>所有的分类方法必须加前缀。避免替换掉工程里同名分类方法的问题。</li>
+</ul>
+<p>如果SDk中包含了<code>category</code>，别人在引入你的SDK时需要做如下设置：<br><img src="/img/Framework/QQ20171211-181057.png" alt="">    </p>
+<h4 id="u9759_u6001_u5E93_u4F9D_u8D56_u5176_u4ED6_u7B2C_u4E09_u65B9_u9759_u6001_u5E93_uFF08Framework_u548C-a_uFF09"><a href="#u9759_u6001_u5E93_u4F9D_u8D56_u5176_u4ED6_u7B2C_u4E09_u65B9_u9759_u6001_u5E93_uFF08Framework_u548C-a_uFF09" class="headerlink" title="静态库依赖其他第三方静态库（Framework和.a）"></a>静态库依赖其他第三方静态库（Framework和.a）</h4><p>正常导入要打包的文件就可以了，在导入第三方静态库的时候要注意，不要选择添加到target中，如果添加进去要去target里面把第三方静态库删掉（只需导入，不要添加进target）<br><img src="/img/Framework/QQ20171211-181613.png" alt="">    </p>
+<p>导入第三方静态库之后再link依赖的系统库，注意顺序：<br><img src="/img/Framework/QQ20171211-183103.png" alt="">   </p>
+<p>如果你的依赖库里面有lib开头的dylib动态库，此时应该会报错<br><img src="/img/Framework/QQ20171211-183309.png" alt=""><br>大概就是没找到对应的库文件，因为tbd是苹果提供的新的动态库格式，之前都是dylib，不知道这里又抽什么风，下面解决问题。先把原来的.tbd删掉，然后再次添加，这个时候选择add other，在弹出的窗口中按快捷键shift + command + G 调出finder的前往窗口，输入/usr/lib，然后添加相应的dylib动态库。<br><img src="/img/Framework/QQ20171211-183422.png" alt="">   </p>
+<h3 id="u8BBE_u7F6EHeaders"><a href="#u8BBE_u7F6EHeaders" class="headerlink" title="设置Headers"></a>设置Headers</h3><p>把需要暴露出来的头文件拖到<code>public</code>区域，其他的全部放到 <code>project</code>下面，同时需要在自动生成的 <code>xx.framework.h</code>文件中引用所有的公共头文件，如下所示：<br><img src="/img/Framework/QQ20171211-175805.png" alt="">    </p>
+<h3 id="u6253_u5305_Framework"><a href="#u6253_u5305_Framework" class="headerlink" title="打包 Framework"></a>打包 Framework</h3><p>步骤：<br>1、 选中模拟器，编译程序<br>2、 选中测试机，编译程序<br>3、 在finder中找到framework文件，show in finder<br><img src="/img/Framework/QQ20171211-183711.png" alt=""><br><img src="/img/Framework/QQ20171211-183805.png" alt=""><br>一个是Debug-iphoneos（真机）下的，一个是Debug-iphonesimulator(模拟器)下的。<br>4、 利用<code>lipo</code>命令合并 Framework,找到对应的二进制文件：<br><img src="/img/Framework/QQ20171211-184002.png" alt="">    </p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>lipo -info /<span class="constant">Debug</span>-iphoneos/<span class="constant">Someframework</span>.framwork/binaryName</span><br><span class="line"><span class="comment"># Architectures in the fat file: Someframework are: armv7 armv7s arm64</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 合并</span><br><span class="line">$ lipo –create <span class="regexp">/Debug-iphoneos/</span>Someframework.framwork<span class="regexp">/binaryName /</span>Debug-iphonesimulator<span class="regexp">/Someframework.framwork/</span>binaryName –output binaryName</span><br></pre></td></tr></table></figure>
+<pre><code>#拆分
+$ lipo –create binaryName -thin armv7 -output a-output-armv7.framework
+</code></pre><p>以上的操作对象 <strong>binaryName</strong> 都是Framework目录下的二进制文件，最终生成一个二进制文件，拷贝出一个Framework文件，把生成的二进制替换掉Framework里面的二进制文件，就生成了我们需要的SDK文件。    </p>
+<h2 id="u53C2_u8003_u94FE_u63A5"><a href="#u53C2_u8003_u94FE_u63A5" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://www.jianshu.com/p/48aff237e8ff" target="_blank" rel="external">iOS 开发中的『库』(一)</a><br><a href="https://github.com/Damonvvong/iOSDevNotes/blob/master/Notes/framework2.md" target="_blank" rel="external">iOS 开发中的『库』(二)</a><br><a href="http://www.cnblogs.com/tbfirstone/p/5869528.html" target="_blank" rel="external">iOS Architectures 浅谈</a><br><a href="http://www.jianshu.com/p/155a3cfb765e" target="_blank" rel="external">iOS静态库SDK制作（包含第三方静态库）</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/30/AboutUs20171130/" rel="next" title="Everybody knows">
+                <i class="fa fa-chevron-left"></i> Everybody knows
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+      <div id="container" style="display:none"></div>
+      <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+      <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+      <script>
+      const myTheme = {
+        render(state, instance) {
+          const container = document.createElement('div');
+          container.lang = "en-US";
+          container.className = 'gitment-container gitment-root-container';
+          container.appendChild(instance.renderHeader(state, instance));
+          container.appendChild(instance.renderEditor(state, instance));
+          container.appendChild(instance.renderComments(state, instance));
+          container.appendChild(instance.renderFooter(state, instance));
+          return container;
+        }
+      }
+      function showGitment() {
+        $("#gitment_title").attr("style", "display:none");
+        $("#container").attr("style", "").addClass("gitment_container");
+        var gitment = new Gitment({
+          id: window.location.pathname,
+          theme: myTheme,
+          owner: 'tx5655',
+          repo: 'tx5655.github.io',
+          oauth: {
+            client_id: '0b1f75aa11c7cbacf966',
+            client_secret: '72579e0da2f699c132ba61c3223bbd7c461abcf7'
+          }
+        });
+        gitment.render('container');
+      }
+      </script>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/img/avatar.jpg" alt="Tyler Li" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Tyler Li</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">凌冬将至!</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tx5655" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2173969642/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u9759_u6001_u5E93Framework__u7684_u5236_u4F5C"><span class="nav-number">1.</span> <span class="nav-text">静态库Framework 的制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u76EE_u7684"><span class="nav-number">1.1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7B80_u4ECB"><span class="nav-number">1.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u76F8_u5173_u6982_u5FF5"><span class="nav-number">1.3.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u52A8_u6001_u5E93_VS__u9759_u6001_u5E93"><span class="nav-number">1.3.1.</span> <span class="nav-text">动态库 VS 静态库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u52A8_u6001_u5E93_u7684_u5904_u7406_u65B9_u5F0F"><span class="nav-number">1.3.2.</span> <span class="nav-text">动态库的处理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u52A8_u6001_u5E93_u5230_u5E95_u5728_u5185_u5B58_u54EA_u5757_u533A_u57DF_u7684_u95EE_u9898"><span class="nav-number">1.3.3.</span> <span class="nav-text">动态库到底在内存哪块区域的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#framework_VS_-a"><span class="nav-number">1.3.4.</span> <span class="nav-text">.framework VS .a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tbd_VS_-dylib"><span class="nav-number">1.3.5.</span> <span class="nav-text">.tbd VS .dylib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Embedded_VS-_Linked"><span class="nav-number">1.3.6.</span> <span class="nav-text">Embedded VS. Linked</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_u603B_u7ED3"><span class="nav-number">1.3.7.</span> <span class="nav-text">使用总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9759_u6001_u5E93_Framework_u5236_u4F5C_u6B65_u9AA4"><span class="nav-number">1.4.</span> <span class="nav-text">静态库 Framework制作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u521B_u5EFA_u5DE5_u7A0B"><span class="nav-number">1.4.1.</span> <span class="nav-text">创建工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5DE5_u7A0B_u8BBE_u7F6E"><span class="nav-number">1.4.2.</span> <span class="nav-text">工程设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7F16_u5199_u4EE3_u7801"><span class="nav-number">1.4.3.</span> <span class="nav-text">编写代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bundle__u8D44_u6E90_u6587_u4EF6"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">.bundle  资源文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u652F_u6301bitcode"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">支持bitcode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6E90_u7801_u4E2D_u9700_u8981_u5F15_u5165_category"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">源码中需要引入 category</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u9759_u6001_u5E93_u4F9D_u8D56_u5176_u4ED6_u7B2C_u4E09_u65B9_u9759_u6001_u5E93_uFF08Framework_u548C-a_uFF09"><span class="nav-number">1.4.3.4.</span> <span class="nav-text">静态库依赖其他第三方静态库（Framework和.a）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8BBE_u7F6EHeaders"><span class="nav-number">1.4.4.</span> <span class="nav-text">设置Headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6253_u5305_Framework"><span class="nav-number">1.4.5.</span> <span class="nav-text">打包 Framework</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53C2_u8003_u94FE_u63A5"><span class="nav-number">1.5.</span> <span class="nav-text">参考链接</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tyler Li</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
