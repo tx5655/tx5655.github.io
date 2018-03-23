@@ -55,7 +55,7 @@
 简介Mac OS X扩展了framework的功能，让我们能够利用它来共享代码和资源。通过framework我们可以共享所有形式的资源">
 <meta property="og:type" content="article">
 <meta property="og:title" content="静态库Framework 的制作">
-<meta property="og:url" content="http://yoursite.com/2018/01/15/Framework/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/03/06/Framework/index.html">
 <meta property="og:site_name" content="当下的力量">
 <meta property="og:description" content="静态库Framework 的制作目的诚然制作 Framework 并非什么技术难题，但其中的一些概念也可以加深我们对 编译、 iOS 或者 Mac 相关的了解，也随着 Xcode 的不断升级，制作Framework 也有不少不大不小的坑，在这里也统一收集记录下来。
 简介Mac OS X扩展了framework的功能，让我们能够利用它来共享代码和资源。通过framework我们可以共享所有形式的资源">
@@ -78,7 +78,7 @@
 <meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-183711.png">
 <meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-183805.png">
 <meta property="og:image" content="http://yoursite.com/img/Framework/QQ20171211-184002.png">
-<meta property="og:updated_time" content="2018-01-15T07:14:44.000Z">
+<meta property="og:updated_time" content="2018-03-06T03:42:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="静态库Framework 的制作">
 <meta name="twitter:description" content="静态库Framework 的制作目的诚然制作 Framework 并非什么技术难题，但其中的一些概念也可以加深我们对 编译、 iOS 或者 Mac 相关的了解，也随着 Xcode 的不断升级，制作Framework 也有不少不大不小的坑，在这里也统一收集记录下来。
@@ -243,8 +243,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2018-01-15T15:14:44+08:00" content="2018-01-15">
-              2018-01-15
+            <time itemprop="dateCreated" datetime="2018-03-06T11:42:44+08:00" content="2018-03-06">
+              2018-03-06
             </time>
           </span>
 
@@ -427,6 +427,56 @@
 $ lipo –create binaryName -thin armv7 -output a-output-armv7.framework
 </code></pre><p>以上的操作对象 <strong>binaryName</strong> 都是Framework目录下的二进制文件，最终生成一个二进制文件，拷贝出一个Framework文件，把生成的二进制替换掉Framework里面的二进制文件，就生成了我们需要的SDK文件。    </p>
 <h2 id="u53C2_u8003_u94FE_u63A5"><a href="#u53C2_u8003_u94FE_u63A5" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://www.jianshu.com/p/48aff237e8ff" target="_blank" rel="external">iOS 开发中的『库』(一)</a><br><a href="https://github.com/Damonvvong/iOSDevNotes/blob/master/Notes/framework2.md" target="_blank" rel="external">iOS 开发中的『库』(二)</a><br><a href="http://www.cnblogs.com/tbfirstone/p/5869528.html" target="_blank" rel="external">iOS Architectures 浅谈</a><br><a href="http://www.jianshu.com/p/155a3cfb765e" target="_blank" rel="external">iOS静态库SDK制作（包含第三方静态库）</a></p>
+<ul>
+<li><p>代码规范性</p>
+<ul>
+<li>方法、变量名、宏。类名参数、驼峰</li>
+<li>不能做什么</li>
+<li>代码块封装</li>
+</ul>
+</li>
+<li><p>项目 </p>
+<ul>
+<li>UI 一致性，规范。</li>
+<li>UI标注用来开发</li>
+<li>产品计图用来理解需求</li>
+</ul>
+</li>
+<li><p>项目流程规范</p>
+<ul>
+<li>版本需求会议：及时暴露问题，明确需求是否可落地。记录清楚讨论结果 。内部需求同步。负责人禅道跟踪。</li>
+<li>详细设计，流程图，开发思维，开发角度，记录开发流程。两端同一份详细设计，如果实现不一致需要标明。协调资源。部门联调</li>
+<li>改动项目：标注清楚版本号、需求。标注需求详细设计地址  </li>
+<li>组内自测、交叉功能测试</li>
+<li>提交测试部：bug跟踪修复（禅道）、codeReview</li>
+<li>灰度上线：两轮上线，保证所有功能正常、完整可用</li>
+<li>正式上线</li>
+<li>版本总结：记录问题、延迟的需求、开发经验</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>新人指导  </p>
+<ul>
+<li>当前需求稍微同步一下</li>
+</ul>
+</li>
+<li><p>工程结构 </p>
+</li>
+<li>规范监督、代码review、周例会检查</li>
+</ul>
+<p>需求阶段：<br>预研需求：经理，在技术预研时需要谨慎，确定性、完成率多少<br>整体需求：尽量全部<br>局部需求：相关负责人<br>需求会议负责人，相关需求的人参加</p>
+<p>详细设计：<br>需求范围：后台接口？、H5、客户端（iOS？安卓？）<br>那些需求需要详细跟踪。<br>需求部分需要跟踪，但是不是每一个都需要代码实现</p>
+<p>开发：<br>详细开发代码要求到具体类，结合git日志<br>可以结合技术分享链接<br>开发者、改动记录<br>注释部分也要按需要添加，复杂度高的尽量详细</p>
+<p>自测：  </p>
+<ul>
+<li>自测深度、严谨   </li>
+</ul>
+<p>测试部：<br>codeReview阶段？越早越好，上线之后尽量不要改动。有问题的剔除内部需求，下版本修改</p>
+<p>版本总结：  </p>
+<ul>
+<li>正式会议 </li>
+</ul>
 </span>
       
     </div>
@@ -454,16 +504,16 @@ $ lipo –create binaryName -thin armv7 -output a-output-armv7.framework
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/30/HomeMadeTomcat/" rel="next" title="利用Nodejs几行代码打造的简易服务器">
-                <i class="fa fa-chevron-left"></i> 利用Nodejs几行代码打造的简易服务器
+              <a href="/2018/01/15/AboutUs20171130/" rel="next" title="Everybody knows">
+                <i class="fa fa-chevron-left"></i> Everybody knows
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/15/AboutUs20171130/" rel="prev" title="Everybody knows">
-                Everybody knows <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/23/PrivatePod/" rel="prev" title="Cocoapods 创建私有Pod">
+                Cocoapods 创建私有Pod <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
